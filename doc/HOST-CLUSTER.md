@@ -1,6 +1,6 @@
 ### Deploy K3d cluster using config file
 ```
-k3d create cluster --config k3d/config.yaml
+k3d create cluster --config=./k3d/config.yaml
 ```
 
 `Be aware` 

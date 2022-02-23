@@ -97,3 +97,22 @@ vcluster connect vcluster-a -n team-a --update-current
 ```
 ![vcluster-a spinup](../doc/images/vcluster-a-update-current.gif)
 
+**Distinguish**
+
+Virtual:
+```
+kkubectl get no -o wide
+NAME                        STATUS   ROLES    AGE   VERSION        INTERNAL-IP     EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION      CONTAINER-RUNTIME
+k3d-vcluster-poc-server-0   Ready    <none>   34s   v1.23.3+k3s1   10.43.234.204   <none>        Fake Kubernetes Image   4.19.76-fakelinux   docker://19.3.12
+```
+
+Host:
+```
+kubectl get no  -o wide
+NAME                        STATUS   ROLES                  AGE     VERSION        INTERNAL-IP   EXTERNAL-IP   OS-IMAGE   KERNEL-VERSION     CONTAINER-RUNTIME
+k3d-vcluster-poc-agent-0    Ready    <none>                 3m49s   v1.22.6+k3s1   172.31.0.2    <none>        K3s dev    5.4.0-99-generic   containerd://1.5.9-k3s1
+k3d-vcluster-poc-agent-1    Ready    <none>                 3m48s   v1.22.6+k3s1   172.31.0.4    <none>        K3s dev    5.4.0-99-generic   containerd://1.5.9-k3s1
+k3d-vcluster-poc-server-0   Ready    control-plane,master   3m54s   v1.22.6+k3s1   172.31.0.3    <none>        K3s dev    5.4.0-99-generic   containerd://1.5.9-k3s1
+```
+
+In first example OS-IMAGE is `Fake Kubernetes Image` what point exact to virtual cluster.
