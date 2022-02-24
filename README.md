@@ -23,3 +23,8 @@ Steps:
 1. [Intall binary](./doc/INSTALL.md)
 2. [Create host cluster](./doc/HOST-CLUSTER.md)
 3. [Create vcluster](./doc/VIRTUAL-CLUSTER.md)
+4. [ArgoCD deploy vcluster declarative approach](./doc/ARGO-DEPLOYMENT.md)
+5. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
+6. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
+7. [Nesting vcluster (vcluster inside vcluster)](./doc/NESTING-VCLUSTER.md)
+8. [Nesting FluxCD inside vcluster](./doce/FLUXCD-IN-VCLUSTER.md)
