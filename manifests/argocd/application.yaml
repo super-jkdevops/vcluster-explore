@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vcluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: vcluster
+    server: https://kubernetes.default.svc
+  project: vcluster-gitops
+  source:
+    chart: vcluster
+    helm:
+      parameters:
+      - name: serviceCIDR
+        value: 10.43.0.1/12
+      - name: service.type
+        value: LoadBalancer
+    repoURL: https://charts.loft.sh/
+    targetRevision: 0.6.0
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
