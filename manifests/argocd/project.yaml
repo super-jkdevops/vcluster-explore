@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: vcluster-gitops
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: This is ArgoCD deployment GitOps vcluster
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: *
+    server: *
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+
+argocd app create vcluster-poc --repo https://charts.loft.sh/  --helm-chart vcluster --dest-namespace vcluster --dest-server https://kubernetes.default.svc \
+                               --sync-option CreateNamespace=true --sync-policy=auto \
+                               --helm-set serviceCIDR="10.43.0.1/12" --helm-set service.type="LoadBalancer"
+
+
+
+
