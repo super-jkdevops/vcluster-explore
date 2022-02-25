@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: istio-ingress
     server: https://kubernetes.default.svc
-  project: istio-poc
+  project: vcluster-gitops
   source:
     helm:
       parameters:
