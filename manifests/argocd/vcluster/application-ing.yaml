@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster
+  name: vcluster-v
   namespace: argocd
 
 spec:
   destination:
-    namespace: team-b
+    namespace: team-c
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
