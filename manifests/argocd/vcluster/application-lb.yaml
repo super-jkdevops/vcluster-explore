@@ -11,7 +11,7 @@ spec:
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster
+      releaseName: vcluster-b
       parameters:
       - name: serviceCIDR
         value: 10.43.0.1/12
