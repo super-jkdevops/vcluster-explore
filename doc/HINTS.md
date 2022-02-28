@@ -1,5 +1,4 @@
-I found some discrepancies according to documentation.
-
+### Discrepancies according to documentation.
 
 - [X] vcluster.yaml incorrect syntax
     It should be:
@@ -52,3 +51,16 @@ vcluster-aa-headless                        ClusterIP      None            <none
 vcluster-aa                                 LoadBalancer   10.43.188.155   <pending>                          443:32478/TCP            68s
 vcluster-aaa-headless                       ClusterIP      None            <none>                             443/TCP                  54s
 vcluster-aaa                                LoadBalancer   10.43.146.131   <pending>                          443:32208/TCP            54s
+```
+
+
+### Extract kubeconfig without vcluster commands
+Just use standard tools:
+
+- [X] kubectl
+- [X] yq
+- [X] base64
+
+```
+kubectl get secrets -n team-c vc-vcluster -o yaml | yq e ".data.config" | base64 -d
+```
