@@ -38,6 +38,9 @@ kubectl apply -f manifests/istio
 kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 ```
 
+ArgoCD application list:
+![TEAM-C](./images/ArgoCD-team-c.png)
+
 #### Accessing cluster 
 
 ```
