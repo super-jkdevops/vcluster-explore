@@ -3,6 +3,7 @@
 ## Requirements
 
 * Kubernetes Cluster (K3d/Kind/K3s/K8s/AKS/GKE/EKS)
+* Vcluster binnary installed (accessing cluster test)
 * ArgoCD installed and configured within Kubernetes
 * Istio installed and configured (ArgoCD approaches)
 
@@ -24,6 +25,13 @@ vcluster connect vcluster -n team-b --server=https://$LB_IP --kube-config=./kube
 
 
 ### Ingress (Istio)
+Istio manifests should be applied first
+
+```
+kubectl apply -f manifests/istio
+```
+Then applied ArgoCD project & application:
+
 ```
 kubectl apply -f manifests/argocd/common/project.yaml
 kubectl apply -f manifests/istio
@@ -34,7 +42,6 @@ kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 
 ```
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
-
 vcluster connect vcluster -n team-c --server=https://vcluster.team-b.$INGRESS.nip.io --kube-config=./kubeconfig-vcluster-c.yaml
 ```
 
