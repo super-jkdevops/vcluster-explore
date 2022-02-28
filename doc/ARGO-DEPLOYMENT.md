@@ -14,7 +14,13 @@
 kubectl apply -f manifests/common/project.yaml
 kubectl apply -f manifests/argocd/vcluster/application-lb.yaml
 ```
+
 #### Accessing cluster
+```
+export LB_IP=$(kubectl get svc -n istio-ingress -o jsonpath='{$.items[*].status.loadBalancer.ingress[0].ip}')
+vcluster connect vcluster -n team-b --server=https://$LB_IP --kube-config=./kubeconfig-vcluster-b.yaml
+
+```
 
 
 ### Ingress (Istio)
@@ -29,7 +35,7 @@ kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 ```
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 
-vcluster connect vcluster -n vcluster --server=https://vcluster.vcluster.$INGRESS.nip.io
+vcluster connect vcluster -n team-c --server=https://vcluster.team-b.$INGRESS.nip.io --kube-config=./kubeconfig-vcluster-c.yaml
 ```
 
 **Output:**
@@ -39,5 +45,11 @@ vcluster connect vcluster -n vcluster --server=https://vcluster.vcluster.$INGRES
 ```
 
 Output may be different it depend on your configuration
+
+```
+$ kubectl get no --kubeconfig=./kubeconfig-team-c.yaml -o wide
+NAME                         STATUS   ROLES    AGE   VERSION        INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION      CONTAINER-RUNTIME
+k3d-vcluster-demo-server-0   Ready    <none>   60m   v1.23.3+k3s1   10.43.110.80   <none>        Fake Kubernetes Image   4.19.76-fakelinux   docker://19.3.12
+```
 
 
