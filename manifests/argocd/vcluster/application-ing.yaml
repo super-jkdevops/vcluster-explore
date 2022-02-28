@@ -25,4 +25,4 @@ spec:
     automated:
       selfHeal: true
     syncOptions:
-    - CreateNamespace=tru
+    - CreateNamespace=true
