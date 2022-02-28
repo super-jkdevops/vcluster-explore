@@ -14,10 +14,6 @@ spec:
     targetRevision: 1.12.4
     helm:
       releaseName: ingress
-      values: |-
-        global:
-          hub: gcr.io/istio-release
-          tag: 1.12.4
   syncPolicy:
     automated:
       selfHeal: true
