@@ -62,5 +62,5 @@ Just use standard tools:
 - [X] base64
 
 ```
-kubectl get secrets -n team-c vc-vcluster -o yaml | yq e ".data.config" | base64 -d
+kubectl get secrets -n team-c vc-vcluster -o yaml | yq e ".data.config" | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster.team-c.'"$INGRESS"'.nip.io/
 ```
