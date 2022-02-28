@@ -1,6 +1,7 @@
-### Delete vcluster
+### Delete vcluster-a
+
 ```
-helm delete vcluster-a -n team-a --repository-config=''
+helm delete vcluster -n team-a --repository-config=''
 ```
 
 ### Delete k3d hcluster
