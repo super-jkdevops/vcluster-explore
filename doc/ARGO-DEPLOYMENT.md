@@ -42,7 +42,7 @@ kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 
 ```
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
-vcluster connect vcluster -n team-c --server=https://vcluster.team-b.$INGRESS.nip.io --kube-config=./kubeconfig-vcluster-c.yaml
+vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.nip.io --kube-config=./kubeconfig-vcluster-c.yaml
 ```
 
 **Output:**
