@@ -41,8 +41,9 @@ kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 #### Accessing cluster 
 
 ```
+mkdir tmp
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
-vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.nip.io --kube-config=./kubeconfig-vcluster-c.yaml
+vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.nip.io --kube-config=./tmp/kubeconfig-team-c.yaml
 ```
 
 **Output:**
@@ -54,7 +55,7 @@ vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.ni
 Output may be different it depend on your configuration
 
 ```
-$ kubectl get no --kubeconfig=./kubeconfig-team-c.yaml -o wide
+kubectl get no --kubeconfig=./tmp/kubeconfig-team-c.yaml -o wide
 NAME                         STATUS   ROLES    AGE   VERSION        INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION      CONTAINER-RUNTIME
 k3d-vcluster-demo-server-0   Ready    <none>   60m   v1.23.3+k3s1   10.43.110.80   <none>        Fake Kubernetes Image   4.19.76-fakelinux   docker://19.3.12
 ```
