@@ -9,10 +9,19 @@ spec:
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    path: manifests/charts/base
-    repoURL: https://github.com/istio/istio.git
-    targetRevision: 1.12.1
+    chart: base
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.12.4
+    helm:
+      releaseName: istio-base
+      parameters:
+      - name: global.hub
+        value: docker.io/istio
+      - name: global.tag
+        value: 1.12.4
   syncPolicy:
-    automated: {}
+    automated:
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
+

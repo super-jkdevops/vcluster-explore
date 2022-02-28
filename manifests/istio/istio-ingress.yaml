@@ -9,16 +9,17 @@ spec:
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
+    chart: gateway
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.12.4
     helm:
-      parameters:
-      - name: global.hub
-        value: docker.io/istio
-      - name: global.tag
-        value: 1.12.0
-    path: manifests/charts/gateways/istio-ingress
-    repoURL: https://github.com/istio/istio.git
-    targetRevision: 1.12.1
+      releaseName: ingress
+      values: |-
+        global:
+          hub: gcr.io/istio-release
+          tag: 1.12.4
   syncPolicy:
-    automated: {}
+    automated:
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
