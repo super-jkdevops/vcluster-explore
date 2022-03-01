@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 
+  name: actions-runner-controller
   namespace: argocd
 spec:
   destination:
@@ -11,12 +11,13 @@ spec:
   source:
     chart: actions-runner-controller
     repoURL: https://actions-runner-controller.github.io/actions-runner-controller
-    targetRevision: 0.16.1
+    targetRevision: 0.15.1
     helm:
       releaseName: actions-runner-controller
       values: |-
         authSecret:
-          github_token: Z2hwX0xTZ2NudTJ2NzU0VWtJZElNRjQyWTBjZExQY29zRjBrQ3VTbwo=
+          github_token: <redacted>
+          create: true  
   syncPolicy:
     automated:
       selfHeal: true
