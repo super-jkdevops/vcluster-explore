@@ -6,25 +6,25 @@ For testing purpose I encourage to use k3d.
 
 **Assumptions**
 namespace:    team-a
-cluster name: vcluster-a
+cluster name: vcluster
 
 #### Variants:
 There are several variants installation
 
 **Without exposing**
 ```
-vcluster create vcluster-a -n team-a
+vcluster create vcluster -n team-a
 ```
 
 **Exposing externally using LB**
 ```
-vcluster create vcluster-a -n team-a --expose
+vcluster create vcluster -n team-a --expose
 ```
 
 
 **With additional configuration**
 ```
-vcluster create vcluster-a -n team-a -f values.yaml
+vcluster create vcluster -n team-a -f values.yaml
 ```
 
 #### Sample values file
@@ -74,7 +74,7 @@ Trying imperative way (testing)
 
 **Deploy**:
 ```
-helm install vcluster-a vcluster/vcluster -n team-a --create-namespace -f ./defaults/vcluster.yaml
+helm install vcluster vcluster/vcluster -n team-a --create-namespace -f ./defaults/vcluster.yaml
 ```
 
 ![vcluster-a spinup](../doc/images/vcluster-a-install.gif)
@@ -93,7 +93,7 @@ export KUBECONFIG=./kubeconfig.yaml
 
 Permanently, update default kubeconfig (~/.kube/config):
 ```
-vcluster connect vcluster-a -n team-a --update-current
+vcluster connect vcluster -n team-a --update-current
 ```
 ![vcluster-a spinup](../doc/images/vcluster-a-update-current.gif)
 
