@@ -6,6 +6,7 @@ metadata:
 servers: 1
 agents: 2
 image: docker.io/rancher/k3s:v1.22.6-k3s1
+subnet: "172.18.0.0/16"
 ports:
 # For vCluster
 - port: 4443:443

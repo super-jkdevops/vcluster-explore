@@ -42,6 +42,28 @@ kubectl apply -f manifests/istio
 kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 ```
 
+`Important`
+
+Below values need to be provided (see application-ing.yaml manifest):
+```
+- name: syncer.extraArgs
+        value: '{--tls-san=vcluster.team-c.172.18.0.5.nip.io}'
+```
+
+Otherwise you got an error:
+
+```
+Unable to connect to the server: x509: certificate is valid for kubernetes.default.svc.cluster.local, kubernetes.default.svc, kubernetes.default, kubernetes, localhost, not vcluster.team-c.172.18.0.5.nip.io
+```
+
+Solution 
+Avoiding extra efforts can be static configuration for K3D cluster:
+
+**k3d/config.yaml**
+```
+subnet: "172.18.0.0/16"
+```
+
 ArgoCD application list:
 ![TEAM-C](./images/ArgoCD-team-c.png)
 
