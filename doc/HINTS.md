@@ -58,7 +58,6 @@ vcluster-aaa                                LoadBalancer   10.43.146.131   <pend
 Just use standard tools:
 
 - [X] kubectl
-- [X] yq
 - [X] base64
 
 ```
