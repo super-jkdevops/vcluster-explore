@@ -10,6 +10,12 @@
 ## Applying manifests
 2 available options:
 
+### Requisite
+Create project
+```
+kubectl apply -f manifests/argocd/common/project.yaml
+```
+
 ### Loadbalancer
 ```
 kubectl apply -f manifests/common/project.yaml
@@ -20,7 +26,6 @@ kubectl apply -f manifests/argocd/vcluster/application-lb.yaml
 ```
 export LB_IP=$(kubectl get svc -n istio-ingress -o jsonpath='{$.items[*].status.loadBalancer.ingress[0].ip}')
 vcluster connect vcluster -n team-b --server=https://$LB_IP --kube-config=./kubeconfig-vcluster-b.yaml
-
 ```
 
 
@@ -33,7 +38,6 @@ kubectl apply -f manifests/istio
 Then applied ArgoCD project & application:
 
 ```
-kubectl apply -f manifests/argocd/common/project.yaml
 kubectl apply -f manifests/istio
 kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
 ```

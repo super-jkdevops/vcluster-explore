@@ -18,7 +18,7 @@ spec:
       - name: service.type
         value: ClusterIP
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster.team-c.192.168.32.3.nip.io}'
+        value: '{--tls-san=vcluster.team-c.172.18.0.5.nip.io}'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
