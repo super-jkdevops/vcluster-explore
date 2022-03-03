@@ -19,7 +19,7 @@ kubectl apply -f manifests/argocd/common/project.yaml
 ### Loadbalancer
 ```
 kubectl apply -f manifests/common/project.yaml
-kubectl apply -f manifests/argocd/vcluster/application-lb.yaml
+kubectl apply -f manifests/argocd/vcluster/loadbalancer/application-lb.yaml
 ```
 
 #### Accessing cluster
@@ -39,7 +39,7 @@ Then applied ArgoCD project & application:
 
 ```
 kubectl apply -f manifests/istio
-kubectl apply -f manifests/argocd/vcluster/application-ing.yaml
+kubectl apply -f manifests/argocd/vcluster/ingress/application-ing.yaml
 ```
 
 `Important`
