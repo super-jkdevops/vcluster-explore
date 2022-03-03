@@ -1,0 +1,3 @@
+authSecret:
+  github_token: <redacted>
+  create: true

@@ -14,4 +14,4 @@ spec:
     tls:
       mode: PASSTHROUGH
     hosts:
-    - vcluster.team-c.192.168.32.3.nip.io
+    - vcluster.team-c.172.18.0.5.nip.io

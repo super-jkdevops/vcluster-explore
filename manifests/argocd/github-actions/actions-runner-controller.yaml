@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actions-runner-controller
+  namespace: argocd
+spec:
+  destination:
+    namespace: actions-runner-system
+    server: https://kubernetes.default.svc
+  project: vcluster-gitops
+  source:
+    chart: actions-runner-controller
+    repoURL: https://actions-runner-controller.github.io/actions-runner-controller
+    targetRevision: 0.15.1
+    helm:
+      releaseName: actions-runner-controller
+      values: |-
+        authSecret:
+          github_token: <redacted>
+          create: true  
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
