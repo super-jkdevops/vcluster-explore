@@ -4,7 +4,7 @@
 
 * Kubernetes Cluster (K3d/Kind/K3s/K8s/AKS/GKE/EKS)
 * Vcluster binnary installed (accessing cluster test)
-* ArgoCD installed and configured within Kubernetes
+* ArgoCD installed and configured within Kubernetes if not try [this](./ARGOCD-INSTALL.md)
 * Istio installed and configured (ArgoCD approaches)
 
 ## Applying manifests
