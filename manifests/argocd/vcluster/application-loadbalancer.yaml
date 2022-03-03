@@ -20,5 +20,7 @@ spec:
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
+    automated:
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
