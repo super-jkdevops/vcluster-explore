@@ -28,3 +28,4 @@ Steps:
 6. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
 7. [Nesting vcluster (vcluster inside vcluster)](./doc/NESTING-VCLUSTER.md)
 8. [Nesting FluxCD inside vcluster](./doce/FLUXCD-IN-VCLUSTER.md)
+9. [Hints and usefull commands](./doc/HINTS.md)
