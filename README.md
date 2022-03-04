@@ -21,11 +21,11 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 
 Steps:
 1. [Intall binary](./doc/INSTALL.md)
-2. [Create host cluster](./doc/HOST-CLUSTER.md)
-3. [Create vcluster](./doc/VIRTUAL-CLUSTER.md)
-4. [ArgoCD deploy vcluster declarative approach](./doc/ARGO-DEPLOYMENT.md)
-5. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
-6. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
-7. [Nesting vcluster (vcluster inside vcluster)](./doc/NESTING-VCLUSTER.md)
-8. [Nesting FluxCD inside vcluster](./doce/ARGOCD-INSTALL.md)
+2. [Create host cluster K3D](./doc/HOST-CLUSTER.md)
+3. [Create vcluster manually only testing purpose](./doc/VIRTUAL-CLUSTER.md)
+4. [Bootstrap ArgoCD with necessary application](./doc/ARGOCD-INSTALL.md)
+5. [ArgoCD deploy vcluster declarative way application deployment](./doc/ARGO-DEPLOYMENT.md)
+6. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
+7. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
+8. [Nesting vcluster (vcluster inside vcluster)](./doc/NESTING-VCLUSTER.md)
 9. [Hints and usefull commands](./doc/HINTS.md)
