@@ -7,7 +7,9 @@
 * Istio installed and configured (ArgoCD approaches)
 
 ## Applying manifests
-2 available options:
+- [X] install 
+- [X] istio gateway & virtual service
+- [X] vcluster-a/vcluster-b
 
 ### Prequisite
 Create project
@@ -15,7 +17,7 @@ Create project
 kubectl apply -f manifests/argocd/common/project.yaml
 ```
 
-### Ingress (Istio)
+### Istio base, istiod, istio ingress
 Istio manifests should be applied first (Apps of apps & sync wave under construction!)
 
 ```
