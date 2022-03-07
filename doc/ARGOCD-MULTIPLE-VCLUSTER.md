@@ -31,6 +31,8 @@ kubectl apply -f manifests/istio/vcluster-vs-ab.yaml
 kubectl apply -f manifests/argocd/vcluster/application-ingress-a.yaml
 kubectl apply -f manifests/argocd/vcluster/application-ingress-b.yaml
 ```
+ArgoCD application list:
+![TEAM-C](./images/ArgoCD-team-c-multiple.png)
 
 #### Accessing cluster 
 Alternatively kubectl instead of vcluster
