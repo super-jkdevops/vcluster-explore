@@ -12,7 +12,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - "*"
+      - "vcluster-a.team-c.172.18.0.3.nip.io"
     route:
     - destination:
         host: vcluster-a
@@ -33,7 +33,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - "*"
+      - "vcluster-b.team-c.172.18.0.3.nip.io"
     route:
     - destination:
         host: vcluster-b
