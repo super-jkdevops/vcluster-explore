@@ -94,3 +94,9 @@ kubectl get no --kubeconfig=./tmp/kubeconfig-team-c.yaml -o wide
 NAME                         STATUS   ROLES    AGE   VERSION        INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION      CONTAINER-RUNTIME
 k3d-vcluster-demo-server-0   Ready    <none>   60m   v1.23.3+k3s1   10.43.110.80   <none>        Fake Kubernetes Image   4.19.76-fakelinux   docker://19.3.12
 ```
+
+Alternatively kubectl instead of vcluster
+```
+kubectl get secret -n team-c vc-vcluster -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-kubeconfig-team-c.yaml
+kubectl get secret -n team-c vc-vcluster-extra -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-extra.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-extra-kubeconfig-team-c.yaml
+```
