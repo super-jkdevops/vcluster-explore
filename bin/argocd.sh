@@ -18,7 +18,7 @@ chmod 0600 /var/tmp/$CLUSTER/argocd/ArgoCD-initial-pass.txt
 
 echo "ArgoCD command line initialization"
 SERVER=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
-PORT=$(kubectl -n argocd get service argocd-internal-server -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+PORT=$(kubectl -n argocd get service argocd-apps-argocd-vcluster-server -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
 PASS=$(cat /var/tmp/$CLUSTER/argocd/ArgoCD-initial-pass.txt)
 USER="admin"
 

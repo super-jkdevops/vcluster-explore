@@ -51,8 +51,10 @@ kubectl apply -f manifests/argocd/vcluster/application-ingress.yaml
 Below values need to be provided (see application-ing.yaml manifest):
 ```
 - name: syncer.extraArgs
-        value: '{--tls-san=vcluster.team-c.172.18.0.5.nip.io}'
+        value: '{--tls-san=vcluster.team-c.172.18.0.3.nip.io}'
 ```
+For testing please make sure that you have 172.18.0.3 assigned to one of k3d nodes, otherwise you will be not able connect to.
+
 
 Otherwise you got an error:
 
