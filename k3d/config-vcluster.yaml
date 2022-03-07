@@ -19,6 +19,19 @@ ports:
 - port: 8443:8443
   nodeFilters:
   - loadbalancer
+# For sample application
+- port: 8081:8081
+  nodeFilters:
+  - loadbalancer
+- port: 8082:8082
+  nodeFilters:
+  - loadbalancer
+- port: 8083:8083
+  nodeFilters:
+  - loadbalancer
+- port: 8084:8084
+  nodeFilters:
+  - loadbalancer
 options:
   k3d:
     wait: true
