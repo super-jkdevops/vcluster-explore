@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-c-B
+  name: vcluster-c-a
   namespace: argocd
 spec:
   destination:
@@ -11,14 +11,14 @@ spec:
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster-B
+      releaseName: vcluster-a
       parameters:
       #- name: serviceCIDR
       #  value: 10.43.0.0/16
       - name: service.type
         value: ClusterIP
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-B.team-c.172.18.0.3.nip.io}'
+        value: '{--tls-san=vcluster-a.team-c.172.18.0.3.nip.io}'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
