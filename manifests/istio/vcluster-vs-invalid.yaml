@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: vcluster-vs
+  name: vcluster-a-vs
   namespace: team-c
 spec:
   hosts:
@@ -15,6 +15,27 @@ spec:
       - "*"
     route:
     - destination:
-        host: vcluster
+        host: vcluster-a
+        port:
+          number: 443
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vcluster-b-vs
+  namespace: team-c
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-ingress/vcluster
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - "*"
+    route:
+    - destination:
+        host: vcluster-b
         port:
           number: 443

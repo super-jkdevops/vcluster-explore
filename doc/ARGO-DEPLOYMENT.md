@@ -97,6 +97,6 @@ k3d-vcluster-demo-server-0   Ready    <none>   60m   v1.23.3+k3s1   10.43.110.80
 
 Alternatively kubectl instead of vcluster
 ```
-kubectl get secret -n team-c vc-vcluster -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-kubeconfig-team-c.yaml
-kubectl get secret -n team-c vc-vcluster-extra -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-extra.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-extra-kubeconfig-team-c.yaml
+kubectl get secret -n team-c vc-vcluster-a -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-a.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-a-kubeconfig-team-c.yaml
+kubectl get secret -n team-c vc-vcluster-b -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-b.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-b-kubeconfig-team-c.yaml
 ```
