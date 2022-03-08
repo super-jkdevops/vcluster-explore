@@ -20,12 +20,12 @@ spec:
       values: |-
         sync:
           nodes:
-            enabled: true
+            enabled: false
             syncAllNodes: false
             nodeSelector: "node-role.kubernetes.io/master=true"
-            syncNodeChanges: false
+            syncNodeChanges: true
         vcluster:
-          image: 'rancher/k3s:v1.19.13-k3s1'
+          image: rancher/k3s:v1.19.13-k3s1
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
