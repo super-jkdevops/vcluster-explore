@@ -22,6 +22,7 @@ spec:
           nodes:
             enabled: true
             syncAllNodes: true
+            syncNodeChanges: true
         vcluster:
           image: rancher/k3s:v1.20.15-k3s1
     repoURL: https://charts.loft.sh/
