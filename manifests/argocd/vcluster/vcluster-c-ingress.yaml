@@ -18,13 +18,15 @@ spec:
       - name: syncer.extraArgs
         value: '{--tls-san=vcluster-c.team-c.172.18.0.3.nip.io}'
       - name: vcluster.image
-        value: 'rancher/k3s:v1.20.2-k3s1'
+        value: 'rancher/k3s:v1.21.2-k3s1'
       - name: sync.nodes.syncAllNodes
         value: 'false'
       - name: sync.nodes.enabled
-        value: 'true' 
+        value: 'false' 
       - name: sync.nodes.nodeSelector
         value: 'node-role.kubernetes.io/master=true'   
+      - name: sync.nodes.syncNodeChanges
+        value: 'true'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
