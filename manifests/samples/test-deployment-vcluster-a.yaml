@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: apps
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-a
+  name: test-a
+  namespace: apps
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-a
+  template:
+    metadata:
+      labels:
+        app: test-a
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: test-a
+  name: test-a
+  namespace: apps
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: test-a
+  type: ClusterIP
