@@ -5,13 +5,21 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: team-a
+    namespace: team-c
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster
+      releaseName: vcluster-a
+      parameters:
+      - name: service.type
+        value: ClusterIP
+      - name: syncer.extraArgs
+        value: '{--tls-san=vcluster-a.team-c.172.18.0.3.nip.io}'
+      values: |-
+        vcluster:
+          image: rancher/k3s:v1.19.13-k3s1
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
