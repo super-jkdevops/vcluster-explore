@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-a
+  name: vcluster-c
   namespace: argocd
 spec:
   destination:
@@ -11,21 +11,20 @@ spec:
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster-a
+      releaseName: vcluster-c
       parameters:
       - name: service.type
         value: ClusterIP
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-a.team-c.172.18.0.3.nip.io}'
-      values: |-
-        sync:
-          nodes:
-            enabled: false
-            syncAllNodes: false
-            nodeSelector: "node-role.kubernetes.io/master=true"
-            syncNodeChanges: true
-        vcluster:
-          image: rancher/k3s:v1.19.13-k3s1
+        value: '{--tls-san=vcluster-c.team-c.172.18.0.3.nip.io}'
+      - name: vcluster.image
+        value: 'rancher/k3s:v1.20.2-k3s1'
+      - name: sync.nodes.syncAllNodes
+        value: 'false'
+      - name: sync.nodes.enabled
+        value: 'true' 
+      - name: sync.nodes.nodeSelector
+        value: 'node-role.kubernetes.io/master=true'   
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
