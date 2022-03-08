@@ -18,18 +18,18 @@ kubectl apply -f manifests/argocd/common/project.yaml
 
 ### Clusterip
 ```
-kubectl apply -f manifests/argocd/vcluster/application-clusterip.yaml
+kubectl apply -f manifests/argocd/vcluster/vcluster-clusterip.yaml
 ```
 
 ### Loadbalancer
 ```
-kubectl apply -f manifests/argocd/vcluster/application-loadbalancer.yaml
+kubectl apply -f manifests/argocd/vcluster/vcluster-loadbalancer.yaml
 ```
 
 #### Accessing cluster
 ```
 export LB_IP=$(kubectl get svc -n istio-ingress -o jsonpath='{$.items[*].status.loadBalancer.ingress[0].ip}')
-vcluster connect vcluster -n team-b --server=https://$LB_IP --kube-config=./kubeconfig-vcluster-b.yaml
+vcluster connect vcluster -n team-b --server=https://$LB_IP --kube-config=./kubeconfig-vcluster-test1.yaml
 ```
 
 
@@ -43,12 +43,12 @@ Then applied ArgoCD project & application:
 
 ```
 kubectl apply -f manifests/istio
-kubectl apply -f manifests/argocd/vcluster/application-ingress.yaml
+kubectl apply -f manifests/argocd/vcluster/vcluster-ingress.yaml
 ```
 
 `Important`
 
-Below values need to be provided (see application-ing.yaml manifest):
+Below values need to be provided!
 ```
 - name: syncer.extraArgs
         value: '{--tls-san=vcluster.team-c.172.18.0.3.nip.io}'
@@ -78,7 +78,7 @@ ArgoCD application list:
 ```
 mkdir tmp
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
-vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.nip.io --kube-config=./tmp/kubeconfig-team-c.yaml
+vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.nip.io --kube-config=./tmp/vcluster-kubeconfig-team-c.yaml
 ```
 
 **Output:**
@@ -90,7 +90,7 @@ vcluster connect vcluster -n team-c --server=https://vcluster.team-c.$INGRESS.ni
 Output may be different it depend on your configuration
 
 ```
-kubectl get no --kubeconfig=./tmp/kubeconfig-team-c.yaml -o wide
+kubectl get no --kubeconfig=./tmp/vcluster-kubeconfig-team-c.yaml -o wide
 NAME                         STATUS   ROLES    AGE   VERSION        INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION      CONTAINER-RUNTIME
 k3d-vcluster-demo-server-0   Ready    <none>   60m   v1.23.3+k3s1   10.43.110.80   <none>        Fake Kubernetes Image   4.19.76-fakelinux   docker://19.3.12
 ```

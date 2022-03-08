@@ -35,9 +35,9 @@ Then applied ArgoCD project & application:
 
 ```
 kubectl apply -f manifests/istio/vcluster-gateway.yaml
-kubectl apply -f manifests/istio/vcluster-vs-ab.yaml
 kubectl apply -f manifests/argocd/vcluster/application-ingress-a.yaml
 kubectl apply -f manifests/argocd/vcluster/application-ingress-b.yaml
+kubectl apply -f manifests/istio/vcluster-vs-ab.yaml
 ```
 ArgoCD application list:
 ![TEAM-C](./images/ArgoCD-team-c-multiple.png)
@@ -51,6 +51,10 @@ kubectl get secret -n team-c vc-vcluster-a -o jsonpath='{.data.config}' | base64
 kubectl get secret -n team-c vc-vcluster-b -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-b.team-c.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-b-kubeconfig-team-c.yaml
 ```
 
+**Export ingress var:**
+```
+export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+```
 
 **vcluster-a**
 ```

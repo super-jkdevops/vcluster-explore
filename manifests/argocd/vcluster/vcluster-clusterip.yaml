@@ -1,24 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-c-a
+  name: vcluster-test1
   namespace: argocd
 spec:
   destination:
-    namespace: team-c
+    namespace: team-a
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster-a
-      parameters:
-      #- name: serviceCIDR
-      #  value: 10.43.0.0/16
-      - name: service.type
-        value: ClusterIP
-      - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-a.team-c.172.18.0.3.nip.io}'
+      releaseName: vcluster
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
