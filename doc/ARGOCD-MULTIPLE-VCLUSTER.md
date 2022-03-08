@@ -57,17 +57,24 @@ export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o 
 ```
 
 **vcluster-a**
+Read values to get more details about vcluster-a characteristic
 ```
 kubectl get no --kubeconfig=./tmp/vcluster-a-kubeconfig-team-c.yaml
-NAME                         STATUS   ROLES    AGE   VERSION
-k3d-vcluster-demo-server-0   Ready    <none>   30m   v1.23.3+k3s1
+NAME                         STATUS   ROLES    AGE     VERSION
+k3d-vcluster-demo-server-0   Ready    <none>   3m19s   v1.20.2+k3s1
 ```
 
+More details about syncing an be find [here](https://www.vcluster.com/docs/architecture/nodes)
+
 **vcluster-b**
+Read values to get more details about vcluster-b characteristic
 ```
 kubectl get no --kubeconfig=./tmp/vcluster-b-kubeconfig-team-c.yaml
 NAME                        STATUS   ROLES    AGE   VERSION
-k3d-vcluster-demo-agent-0   Ready    <none>   38m   v1.23.3+k3s1
+NAME                         STATUS   ROLES                  AGE     VERSION
+k3d-vcluster-demo-server-0   Ready    control-plane,master   4m10s   v1.22.6+k3s1
+k3d-vcluster-demo-agent-1    Ready    <none>                 4m10s   v1.22.6+k3s1
+k3d-vcluster-demo-agent-0    Ready    <none>                 4m10s   v1.22.6+k3s1
 ```
 
 ### ArgoCD installation aross vlusters
