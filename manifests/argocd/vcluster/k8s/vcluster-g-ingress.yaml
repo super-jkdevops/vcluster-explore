@@ -41,8 +41,8 @@ spec:
           fake-persistentvolumes:
             enabled: true # will be ignored if persistentvolumes.enabled = true
           nodes:
-            enabled: true
-            syncAllNodes: true
+            enabled: false
+            syncAllNodes: false
             nodeSelector: ""
             syncNodeChanges: true
           persistentvolumes:
