@@ -129,4 +129,5 @@ pod/test-7c68854699-8fczs   0/1     Pending   0          21s
 pod/test-7c68854699-44zn2   0/1     Pending   0          21s
 ```
 
-`Showing up Pending state, it looks disadvantage. The reason is pods status is exposing to cluster using nodes and nodes are not visible!`
+`Showing up Pending state, it looks me to bug. The reason of pending state is that
+pods status is exposing to the cluster by nodes and nodes are not visible!`

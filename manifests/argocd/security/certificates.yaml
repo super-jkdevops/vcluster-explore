@@ -1,21 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: certificates
   namespace: argocd
 spec:
   destination:
-    namespace: cert-manager
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    chart: cert-manager
-    repoURL: https://charts.jetstack.io
-    targetRevision: 1.7.1
-    helm:
-      releaseName: cert-manager
-      values: |-
-        installCRDs: true
+    path: cert-manager
+    repoURL: https://github.com/devopsapp84/app-collection-argocd.git
+    targetRevision: main
   syncPolicy:
     automated:
       selfHeal: true

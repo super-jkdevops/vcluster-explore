@@ -35,8 +35,8 @@ Then applied ArgoCD project & application:
 
 ```
 kubectl apply -f manifests/istio/vcluster-gateway.yaml
-kubectl apply -f manifests/argocd/vcluster/vcluster-a-ingress.yaml
-kubectl apply -f manifests/argocd/vcluster/vcluster-b-ingress.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-a-ingress.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-b-ingress.yaml
 kubectl apply -f manifests/istio/vcluster-vs-ab.yaml
 ```
 ArgoCD application list:

@@ -13,17 +13,17 @@
 ### Prequisite
 Create project
 ```
-kubectl apply -f manifests/argocd/common/project.yaml
+kubectl apply -f manifests/argocd/projects/project.yaml
 ```
 
 ### Clusterip
 ```
-kubectl apply -f manifests/argocd/vcluster/vcluster-clusterip.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-clusterip.yaml
 ```
 
 ### Loadbalancer
 ```
-kubectl apply -f manifests/argocd/vcluster/vcluster-loadbalancer.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-loadbalancer.yaml
 ```
 
 #### Accessing cluster
@@ -43,7 +43,7 @@ Then applied ArgoCD project & application:
 
 ```
 kubectl apply -f manifests/istio
-kubectl apply -f manifests/argocd/vcluster/vcluster-ingress.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-ingress.yaml
 ```
 
 `Important`
