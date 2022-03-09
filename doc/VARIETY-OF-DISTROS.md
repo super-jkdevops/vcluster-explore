@@ -9,9 +9,9 @@
 ### Legend
 Each cluster has been created in separate namespace and by ArgoCD deployment
 
-**EKS**: team-e -> vcluster-e
-**K0S**: team-f -> vcluster-f
-**K8S**: team-g -> vcluster-g
+**EKS**: team-e -> vcluster-e<br/>
+**K0S**: team-f -> vcluster-f<br/>
+**K8S**: team-g -> vcluster-g<br/>
 
 ### EKS
 
