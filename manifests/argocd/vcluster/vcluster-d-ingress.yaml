@@ -11,7 +11,7 @@ spec:
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster-c
+      releaseName: vcluster-d
       parameters:
       - name: service.type
         value: ClusterIP
@@ -34,18 +34,18 @@ spec:
           persistentvolumeclaims:
             enabled: true
           ingresses:
-            enabled: true
-          fake-nodes:
-            enabled: true # will be ignored if nodes.enabled = true
-          fake-persistentvolumes:
-            enabled: true # will be ignored if persistentvolumes.enabled = true
-          nodes:
             enabled: false
+          fake-nodes:
+            enabled: false # will be ignored if nodes.enabled = true
+          fake-persistentvolumes:
+            enabled: false # will be ignored if persistentvolumes.enabled = true
+          nodes:
+            enabled: true
             syncAllNodes: false
             nodeSelector: ""
             syncNodeChanges: false
           persistentvolumes:
-            enabled: false
+            enabled: true
           storageclasses:
             enabled: false
           priorityclasses:
