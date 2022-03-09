@@ -20,8 +20,16 @@ export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o 
 
 kubectl apply -f manifests/argocd/vcluster/eks
 
-kubectl get secret -n team-c vc-vcluster-e -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-e.team-e.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-e-kubeconfig-team-e.yaml
+kubectl get secret -n team-e vc-vcluster-e -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-e.team-e.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-e-kubeconfig-team-e.yaml
 ```
+
+status:
+```
+$ kubectl get nodes --kubeconfig=./tmp/vcluster-e-kubeconfig-team-e.yaml 
+NAME                        STATUS   ROLES    AGE   VERSION
+k3d-vcluster-demo-agent-1   Ready    <none>   51m   v1.21.5-eks-1-21
+```
+
 
 ### K0s
 ```
@@ -32,11 +40,21 @@ kubectl apply -f manifests/argocd/vcluster/k0s
 kubectl get secret -n team-f vc-vcluster-f -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-f.team-f.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-f-kubeconfig-team-f.yaml
 ```
 
+status:
+TBD cause crashes
+```
+$ kubectl get po -n team-f
+NAME           READY   STATUS             RESTARTS      AGE
+vcluster-f-0   1/2     CrashLoopBackOff   5 (50s ago)   5m19s
+
+```
+
+
 ### K8s
 ```
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 
-kubectl apply -f manifests/argocd/vcluster/eks
+kubectl apply -f manifests/argocd/vcluster/k8s
 
 kubectl get secret -n team-g vc-vcluster-g -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-g.team-g.'"$INGRESS"'.nip.io/' > ./tmp/vcluster-g-kubeconfig-team-g.yaml
 ```
