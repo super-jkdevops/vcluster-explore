@@ -1,0 +1,24 @@
+###
+# vClusters accessing point a/b
+###
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vcluster-d-vs
+  namespace: team-d
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-ingress/vcluster
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - "vcluster-d.team-d.172.18.0.3.nip.io"
+    route:
+    - destination:
+        host: vcluster-d
+        port:
+          number: 443
