@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: istio
+    istio.ingress.kubernetes.io/backend-protocol: HTTPS
+    istio.ingress.kubernetes.io/ssl-passthrough: "true"
+    istio.ingress.kubernetes.io/ssl-redirect: "true"
+  name: vcluster-d-ingress
+  namespace: team-d
+spec:
+  rules:
+  - host: vcluster-d.team-d.172.18.0.3.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: vcluster-d
+            port: 
+              number: 443
+        path: /
+        pathType: ImplementationSpecific

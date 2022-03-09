@@ -1,5 +1,5 @@
 ###
-# vClusters accessing point a/b
+# vClusters accessing point d
 ###
 ---
 apiVersion: networking.istio.io/v1alpha3

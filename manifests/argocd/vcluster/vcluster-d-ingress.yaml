@@ -18,6 +18,7 @@ spec:
       - name: syncer.extraArgs
         value: '{--tls-san=vcluster-d.team-d.172.18.0.3.nip.io}'
       values: |-
+        # Syncing
         sync:
           services:
             enabled: true
@@ -34,16 +35,16 @@ spec:
           persistentvolumeclaims:
             enabled: true
           ingresses:
-            enabled: false
+            enabled: true
           fake-nodes:
-            enabled: false # will be ignored if nodes.enabled = true
+            enabled: true # will be ignored if nodes.enabled = true
           fake-persistentvolumes:
-            enabled: false # will be ignored if persistentvolumes.enabled = true
+            enabled: true # will be ignored if persistentvolumes.enabled = true
           nodes:
             enabled: true
-            syncAllNodes: false
+            syncAllNodes: true
             nodeSelector: ""
-            syncNodeChanges: false
+            syncNodeChanges: true
           persistentvolumes:
             enabled: true
           storageclasses:
@@ -56,6 +57,20 @@ spec:
             enabled: false
           poddisruptionbudgets:
             enabled: false
+
+        # Ingress
+        #ingress:
+        #  enabled: true
+        #  pathType: ImplementationSpecific
+        #  apiVersion: networking.k8s.io/v1
+        #  ingressClassName: "istio"
+        #  host: vcluster-d.local
+        #  annotations:
+        #    kubernetes.io/ingress.class: nginx
+        #    istio.ingress.kubernetes.io/backend-protocol: HTTPS
+        #    istio.ingress.kubernetes.io/ssl-passthrough: "true"
+        #    istio.ingress.kubernetes.io/ssl-redirect: "true"
+        
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
