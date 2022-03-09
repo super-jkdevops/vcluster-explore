@@ -1,0 +1,65 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vcluster-d
+  namespace: argocd
+spec:
+  destination:
+    namespace: team-d
+    server: https://kubernetes.default.svc
+  project: vcluster-gitops
+  source:
+    chart: vcluster
+    helm:
+      releaseName: vcluster-d
+      parameters:
+      - name: service.type
+        value: ClusterIP
+      - name: syncer.extraArgs
+        value: '{--tls-san=vcluster-d.team-d.172.18.0.3.nip.io}'
+      values: |-
+        sync:
+          services:
+            enabled: true
+          configmaps:
+            enabled: true
+          secrets:
+            enabled: true
+          endpoints:
+            enabled: true
+          pods:
+            enabled: true
+          events:
+            enabled: true
+          persistentvolumeclaims:
+            enabled: true
+          ingresses:
+            enabled: false
+          fake-nodes:
+            enabled: false # will be ignored if nodes.enabled = true
+          fake-persistentvolumes:
+            enabled: false # will be ignored if persistentvolumes.enabled = true
+          nodes:
+            enabled: true
+            syncAllNodes: false
+            nodeSelector: ""
+            syncNodeChanges: false
+          persistentvolumes:
+            enabled: true
+          storageclasses:
+            enabled: false
+          priorityclasses:
+            enabled: false
+          networkpolicies:
+            enabled: false
+          volumesnapshots:
+            enabled: false
+          poddisruptionbudgets:
+            enabled: false
+    repoURL: https://charts.loft.sh/
+    targetRevision: 0.6.0
+  syncPolicy:
+    automated:
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
