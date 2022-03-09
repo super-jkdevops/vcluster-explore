@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    path: manifests
+    path: istio
     repoURL: https://github.com/devopsapp84/istio-deploy.git
     targetRevision: main
   syncPolicy:

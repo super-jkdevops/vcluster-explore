@@ -41,10 +41,10 @@ spec:
           fake-persistentvolumes:
             enabled: true # will be ignored if persistentvolumes.enabled = true
           nodes:
-            enabled: false
-            syncAllNodes: false
+            enabled: true
+            syncAllNodes: true
             nodeSelector: ""
-            syncNodeChanges: false
+            syncNodeChanges: true
           persistentvolumes:
             enabled: true
           storageclasses:
@@ -59,17 +59,18 @@ spec:
             enabled: false
 
         # Ingress
-        ingress:
-          enabled: true
-          pathType: ImplementationSpecific
-          apiVersion: networking.k8s.io/v1
-          ingressClassName: "istio"
-          host: vcluster.local
-          annotations:
-            kubernetes.io/ingress.class: istio
-            nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-            nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-            nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        #ingress:
+        #  enabled: true
+        #  pathType: ImplementationSpecific
+        #  apiVersion: networking.k8s.io/v1
+        #  ingressClassName: "istio"
+        #  host: vcluster-d.local
+        #  annotations:
+        #    kubernetes.io/ingress.class: nginx
+        #    istio.ingress.kubernetes.io/backend-protocol: HTTPS
+        #    istio.ingress.kubernetes.io/ssl-passthrough: "true"
+        #    istio.ingress.kubernetes.io/ssl-redirect: "true"
+        
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
