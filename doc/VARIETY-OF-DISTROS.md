@@ -13,6 +13,12 @@ Each cluster has been created in separate namespace and by ArgoCD deployment
 **K0S**: team-f -> vcluster-f<br/>
 **K8S**: team-g -> vcluster-g<br/>
 
+### Helmchart list:
+https://github.com/loft-sh/vcluster/tree/main/charts
+
+![Helmchart list github distros](../doc/images/helmchart-list.png)
+
+
 ### EKS
 
 ```

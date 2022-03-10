@@ -18,6 +18,14 @@ spec:
       - name: syncer.extraArgs
         value: '{--tls-san=vcluster-g.team-g.172.18.0.3.nip.io}'
       values: |-
+        # High availability
+        enableHA: true
+        etcd:
+          replicas: 3
+        controller:
+          replicas: 3
+        api:
+          replicas: 3
         # Syncing
         sync:
           services:
