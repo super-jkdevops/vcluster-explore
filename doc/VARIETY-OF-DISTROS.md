@@ -22,6 +22,9 @@ https://github.com/loft-sh/vcluster/tree/main/charts
 
 ![Helmchart list github distros](../doc/images/helmchart-list.png)
 
+### Warning
+Be aware about default values and adjust serviceCIDR corresponds to your Cluster!
+I encountered an [issue](./VARIETY-OF-DISTROS.md####Issue) within K0S cause it used 10.96.0.0/12!
 
 ### EKS
 
@@ -71,6 +74,17 @@ $ kubectl get po -n team-f
 NAME           READY   STATUS             RESTARTS      AGE
 vcluster-f-0   1/2     CrashLoopBackOff   5 (50s ago)   5m19s
 ```
+
+#### Issue
+The main reason of crash was:
+
+```
+I0310 10:19:18.897321       1 start.go:340] CoreDNS configuration from the manifest file applied successfully
+F0310 10:19:18.903964       1 main.go:32] start controllers: sync kubernetes service: sync kubernetes service: Service "kubernetes" is invalid: spec.clusterIPs: Invalid value: []string{"10.43.58.69"}: failed to allocate IP 10.43.58.69: provided IP is not in the valid range. The range of valid IPs is 10.96.0.0/12
+```
+
+`It means that default serviceCIDR provided by helm values is 10.96.0.0/12 therefore should be 10.43.0.0/12 cause vcluster
+was deployed on k3d!`
 
 ---
 
