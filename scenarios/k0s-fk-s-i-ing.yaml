@@ -1,0 +1,4 @@
+serviceCIDR: "10.43.0.0/12"
+vcluster:
+  image: k0sproject/k0s:v1.23.3-k0s.0
+nodeSelector: {"k0s": "true"}
