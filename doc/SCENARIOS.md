@@ -126,9 +126,9 @@ kubectl create deployment app --replicas=3 --image=nginx --kubeconfig=./tmp/k8s-
 
 ---
 
-### high availability k8s vanilla fake multiple nodes run only on worker/agent nodes
+### high availability k8s vanilla fake multiple nodes run only on all nodes
 
-**host cluster assignment:** agents/worker nodes
+**host cluster assignment:** all nodes
 **vcluster distro:** k8s vanilla
 **characteristic:** fake nodes with specific image
 **accessible:** ClusterIP/ISTIO
