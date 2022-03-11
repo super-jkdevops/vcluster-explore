@@ -27,7 +27,7 @@ Steps:
 5. [ArgoCD deploy vcluster declarative way application deployment](./doc/ARGO-DEPLOYMENT.md)
 6. [ArgoCD deployment multiple vcluster same namespace expose via istio](./doc/ARGOCD-MULTIPLE-VCLUSTER.md)
 7. [Different vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)
-8. [Different scenarios](./doc/VCLUSTER-SCENARIOS.md)
+8. [Different scenarios](./doc/SCENARIOS.md)
 9.  [Deploy sample application on vcluster accessing via istio](./SAMPLE-APPS-VCLUSTER.md)
 10. [Sync scenarios cluster objects visibility](./doc/SYNC-OPTIONS.md)
 11. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
