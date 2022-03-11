@@ -4,7 +4,7 @@ apiVersion: k3d.io/v1alpha4
 metadata:
   name: dev
 servers: 1
-agents: 0
+agents: 3
 image: docker.io/rancher/k3s:v1.22.6-k3s1
 subnet: "172.27.0.0/16"
 ports:
@@ -13,10 +13,23 @@ ports:
   nodeFilters:
   - loadbalancer
 # For ArgoCD
-- port: 8083:8080
+- port: 8092:8080
   nodeFilters:
   - loadbalancer
 - port: 8446:8443
+  nodeFilters:
+  - loadbalancer
+# For sample application
+- port: 9092:9092
+  nodeFilters:
+  - loadbalancer
+- port: 9093:9093
+  nodeFilters:
+  - loadbalancer
+- port: 9094:9094
+  nodeFilters:
+  - loadbalancer
+- port: 9095:9095
   nodeFilters:
   - loadbalancer
 options:

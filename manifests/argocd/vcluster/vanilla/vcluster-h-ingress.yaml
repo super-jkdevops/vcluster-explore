@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vcluster-h
+  namespace: argocd
+spec:
+  destination:
+    namespace: team-h
+    server: https://kubernetes.default.svc
+  project: vcluster-gitops
+  source:
+    chart: vcluster-k8s
+    helm:
+      releaseName: vcluster-h
+      parameters:
+      - name: service.type
+        value: ClusterIP
+
+      - name: serviceCIDR
+        value: "10.43.0.0/12"
+
+      - name: syncer.extraArgs
+        value: '{--tls-san=vcluster-h-api.team-h.172.27.0.3.nip.io}'
+
+      - name: sync.nodes.enabled
+        value: 'false'
+      - name: sync.nodes.syncAllNodes
+        value: 'true'
+      - name: sync.nodes.syncNodeChanges
+        value: 'false'
+
+      # High availability
+      - name: syncer.replicas
+        value: '3'
+      - name: enableHA
+        value: 'true'
+      - name: etcd.replicas
+        value: '3'
+      - name: controller.replicas
+        value: '3'
+      - name: api.replicas
+        value: '3'
+
+      #- name: vcluster.image
+      #  value: 'rancher/k3s:v1.22.7-k3s1'
+
+    repoURL: https://charts.loft.sh/
+    targetRevision: 0.6.0
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
