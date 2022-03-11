@@ -9,9 +9,22 @@
 ### Legend
 Each cluster has been created in separate namespace and by ArgoCD deployment
 
-**EKS**: team-e -> vcluster-e<br/>
-**K0S**: team-f -> vcluster-f<br/>
-**K8S**: team-g -> vcluster-g<br/>
+
+| num | vcluster name | namespace | exposed by | distro | description                                               | HA mode |
+|-----|:--------------|:----------|:-----------|:-------|:----------------------------------------------------------|:--------|
+| 1   | vcluster-e    | team-e    | istio      | EKS    | EKS cluster running based AWS Kuberentes images           | False   |
+| 2   | vcluster-f    | team-f    | istio      | K0S    | K0S cluster with all features needed to run kubernetes    | False   |
+| 3   | vcluster-g    | team-g    | istio      | K8S    | K8S dustribution it simmilar to kubeadm deploy kubernetes | False   |
+
+
+### Helmchart list:
+https://github.com/loft-sh/vcluster/tree/main/charts
+
+![Helmchart list github distros](../doc/images/helmchart-list.png)
+
+### Warning
+Be aware about default values and adjust serviceCIDR corresponds to your Cluster!
+I encountered an [issue](./VARIETY-OF-DISTROS.md####Issue) within K0S cause it used 10.96.0.0/12!
 
 ### EKS
 
@@ -62,9 +75,22 @@ NAME           READY   STATUS             RESTARTS      AGE
 vcluster-f-0   1/2     CrashLoopBackOff   5 (50s ago)   5m19s
 ```
 
+#### Issue
+The main reason of crash was:
+
+```
+I0310 10:19:18.897321       1 start.go:340] CoreDNS configuration from the manifest file applied successfully
+F0310 10:19:18.903964       1 main.go:32] start controllers: sync kubernetes service: sync kubernetes service: Service "kubernetes" is invalid: spec.clusterIPs: Invalid value: []string{"10.43.58.69"}: failed to allocate IP 10.43.58.69: provided IP is not in the valid range. The range of valid IPs is 10.96.0.0/12
+```
+
+`It means that default serviceCIDR provided by helm values is 10.96.0.0/12 therefore should be 10.43.0.0/12 cause vcluster
+was deployed on k3d!`
+
 ---
 
 ### K8s
+Multiple api/etcd/controllers
+
 ```
 export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 
@@ -85,10 +111,16 @@ k3d-vcluster-demo-agent-1   Ready    <none>   2m47s   v1.23.1
 host cluster:
 ```
 $ kubectl get po -n team-g 
-NAME                                                  READY   STATUS    RESTARTS        AGE
-vcluster-g-controller-7677ddb597-lnj6g                1/1     Running   0               5m58s
-vcluster-g-etcd-0                                     1/1     Running   0               5m57s
-vcluster-g-api-749f749df6-cp7tc                       1/1     Running   1 (5m36s ago)   5m59s
-vcluster-g-656bb976b8-rfwcf                           1/1     Running   1 (4m47s ago)   5m58s
-coredns-687874b9dd-q7cfq-x-kube-system-x-vcluster-g   1/1     Running   0               4m44s
+NAME                                                  READY   STATUS    RESTARTS      AGE
+vcluster-g-etcd-0                                     1/1     Running   0             15h
+vcluster-g-api-749f749df6-cp7tc                       1/1     Running   1 (15h ago)   15h
+coredns-687874b9dd-q7cfq-x-kube-system-x-vcluster-g   1/1     Running   0             15h
+vcluster-g-67fbd76597-s7qcq                           1/1     Running   0             5m33s
+vcluster-g-controller-55db6f4cf6-5ct45                1/1     Running   0             5m29s
+vcluster-g-api-749f749df6-9nvnw                       1/1     Running   0             5m33s
+vcluster-g-controller-55db6f4cf6-jhcpz                1/1     Running   0             5m2s
+vcluster-g-api-749f749df6-77jff                       1/1     Running   0             5m33s
+vcluster-g-controller-55db6f4cf6-pldr8                1/1     Running   0             5m33s
+vcluster-g-etcd-1                                     0/1     Running   0             5m33s
+vcluster-g-etcd-2                                     0/1     Running   0             5m32s
 ```

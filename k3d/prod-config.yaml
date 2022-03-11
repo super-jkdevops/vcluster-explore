@@ -13,7 +13,7 @@ ports:
   nodeFilters:
   - loadbalancer
 # For ArgoCD
-- port: 8081:8080
+- port: 8090:8080
   nodeFilters:
   - loadbalancer
 - port: 8444:8443

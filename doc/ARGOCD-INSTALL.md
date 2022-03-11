@@ -16,7 +16,7 @@ Refer to external [repo](https://github.com/devopsapp84/flux-gitops-infra).
 flux bootstrap github --owner=$GH_FLUX_USER \
 --repository=flux-fleet-platform \
 --branch=main \
---path=./clusters/vcluster-demo \
+--path=./clusters/dev \
 --owner=devopsapp84 \
 --log-level=debug \
 --network-policy=false \

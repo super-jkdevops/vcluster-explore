@@ -63,3 +63,9 @@ Just use standard tools:
 ```
 kubectl get secret -n team-c vc-vcluster -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster.team-c.'"$INGRESS"'.nip.io/'
 ```
+
+### Vanilla K8s explore
+
+```
+kubectl get secret -n team-h vcluster-h-certs -o jsonpath='{.data.admin\.conf}'  | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-h-api.'"$INGRESS"'.nip.io/'
+```
