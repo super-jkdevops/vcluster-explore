@@ -12,7 +12,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - "k8s-fk-mlt-hi-ing.multi.172.18.0.3.nip.io"
+      - "k8s-fk-mlt-hi-ing.multi"
     route:
     - destination:
         host: k8s-fk-mlt-hi-ing
