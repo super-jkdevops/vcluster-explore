@@ -16,8 +16,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - "vcluster-e.team-e.172.18.0.3.nip.io"
-      - "172.18.0.3"
+      - "*"
     route:
     - destination:
         host: vcluster-e
