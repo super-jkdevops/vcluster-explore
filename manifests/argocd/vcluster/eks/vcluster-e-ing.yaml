@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: vcluster-e
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: team-e
@@ -18,7 +20,7 @@ spec:
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-e.team-e.172.18.0.3.nip.io}'
+        value: '{--tls-san=172.18.0.3}'
       values: |-
         # Syncing
         sync:

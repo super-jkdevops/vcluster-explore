@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: vcluster-d
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: team-d
