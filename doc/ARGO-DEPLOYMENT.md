@@ -18,12 +18,12 @@ kubectl apply -f manifests/argocd/projects/project.yaml
 
 ### Clusterip
 ```
-kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-clusterip.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-clip.yaml
 ```
 
 ### Loadbalancer
 ```
-kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-loadbalancer.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-lb.yaml
 ```
 
 #### Accessing cluster
@@ -43,7 +43,7 @@ Then applied ArgoCD project & application:
 
 ```
 kubectl apply -f manifests/istio
-kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-ingress.yaml
+kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-ing.yaml
 ```
 
 `Important`
