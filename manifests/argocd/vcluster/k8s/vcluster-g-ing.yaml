@@ -1,25 +1,35 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-e
+  name: vcluster-g
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: team-e
+    namespace: team-g
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    chart: vcluster-eks
+    chart: vcluster-k8s
     helm:
-      releaseName: vcluster-e
+      releaseName: vcluster-g
       parameters:
       - name: service.type
         value: ClusterIP
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-e.team-e.172.18.0.3.nip.io}'
+        value: '{--tls-san=vcluster-g.team-g.172.18.0.3.nip.io}'
       values: |-
+        # High availability
+        enableHA: true
+        etcd:
+          replicas: 3
+        controller:
+          replicas: 3
+        api:
+          replicas: 3
         # Syncing
         sync:
           services:
@@ -59,7 +69,6 @@ spec:
             enabled: false
           poddisruptionbudgets:
             enabled: false
-
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:

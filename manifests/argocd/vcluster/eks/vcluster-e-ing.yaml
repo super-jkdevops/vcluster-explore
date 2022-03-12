@@ -1,22 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-d
+  name: vcluster-e
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: team-d
+    namespace: team-e
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    chart: vcluster
+    chart: vcluster-eks
     helm:
-      releaseName: vcluster-d
+      releaseName: vcluster-e
       parameters:
       - name: service.type
         value: ClusterIP
+      - name: serviceCIDR
+        value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-d.team-d.172.18.0.3.nip.io}'
+        value: '{--tls-san=172.18.0.3}'
       values: |-
         # Syncing
         sync:
@@ -41,8 +45,8 @@ spec:
           fake-persistentvolumes:
             enabled: true # will be ignored if persistentvolumes.enabled = true
           nodes:
-            enabled: true
-            syncAllNodes: true
+            enabled: false
+            syncAllNodes: false
             nodeSelector: ""
             syncNodeChanges: true
           persistentvolumes:
@@ -58,19 +62,6 @@ spec:
           poddisruptionbudgets:
             enabled: false
 
-        # Ingress
-        #ingress:
-        #  enabled: true
-        #  pathType: ImplementationSpecific
-        #  apiVersion: networking.k8s.io/v1
-        #  ingressClassName: "istio"
-        #  host: vcluster-d.local
-        #  annotations:
-        #    kubernetes.io/ingress.class: nginx
-        #    istio.ingress.kubernetes.io/backend-protocol: HTTPS
-        #    istio.ingress.kubernetes.io/ssl-passthrough: "true"
-        #    istio.ingress.kubernetes.io/ssl-redirect: "true"
-        
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:

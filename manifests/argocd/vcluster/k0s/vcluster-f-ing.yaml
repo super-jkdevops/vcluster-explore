@@ -1,33 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-g
+  name: vcluster-f
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: team-g
+    namespace: team-f
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    chart: vcluster-k8s
+    chart: vcluster-k0s
     helm:
-      releaseName: vcluster-g
+      releaseName: vcluster-f
       parameters:
       - name: service.type
         value: ClusterIP
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-g.team-g.172.18.0.3.nip.io}'
+        value: '{--tls-san=vcluster-f.team-f.172.18.0.3.nip.io}'
       values: |-
-        # High availability
-        enableHA: true
-        etcd:
-          replicas: 3
-        controller:
-          replicas: 3
-        api:
-          replicas: 3
         # Syncing
         sync:
           services:

@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: k8s-fk-mlt-hi-ing
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: multi
