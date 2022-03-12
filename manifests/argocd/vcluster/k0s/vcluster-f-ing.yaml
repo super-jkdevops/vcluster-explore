@@ -15,12 +15,12 @@ spec:
     helm:
       releaseName: vcluster-f
       parameters:
-      - name: service.type
-        value: ClusterIP
       - name: serviceCIDR
         value: "10.43.0.0/12"
+      - name: service.type
+        value: ClusterIP
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-f.team-f.172.18.0.3.nip.io}'
+        value: '{--tls-san=vcluster-f.team-f.172.18.0.3.nip.io,172.18.0.3,vcluster-f}'
       values: |-
         # Syncing
         sync:
@@ -48,7 +48,7 @@ spec:
             enabled: false
             syncAllNodes: false
             nodeSelector: ""
-            syncNodeChanges: true
+            syncNodeChanges: fale
           persistentvolumes:
             enabled: true
           storageclasses:

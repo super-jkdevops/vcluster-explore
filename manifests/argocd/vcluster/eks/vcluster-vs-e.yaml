@@ -1,7 +1,6 @@
 ###
 # vClusters accessing point e
 ###
----
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -16,8 +15,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - "vcluster-e.team-e.172.18.0.3.nip.io"
-      - "172.18.0.3"
+      - "vcluster-e"
     route:
     - destination:
         host: vcluster-e

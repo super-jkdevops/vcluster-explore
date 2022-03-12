@@ -20,7 +20,7 @@ spec:
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-g.team-g.172.18.0.3.nip.io}'
+        value: '{--tls-san=vcluster-g.team-g.172.18.0.3.nip.io,172.18.0.3,vcluster-g}'
       values: |-
         # High availability
         enableHA: true
