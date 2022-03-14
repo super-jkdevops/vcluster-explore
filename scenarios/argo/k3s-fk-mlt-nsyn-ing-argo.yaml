@@ -17,6 +17,8 @@ spec:
       parameters:
       - name: service.type
         value: ClusterIP
+      - name: syncer.replicas
+        value: '3'
       - name: syncer.extraArgs
         value: '{--tls-san=k3s-fk-mlt-nsyn-ing.multi.172.18.0.3.nip.io,k3s-fk-mlt-nsyn-ing}'
       - name: vcluster.image
