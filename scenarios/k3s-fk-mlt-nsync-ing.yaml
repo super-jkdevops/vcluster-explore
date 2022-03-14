@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k3s-rl-mlt-syn-ing
+  name: k3s-fk-mlt-nsyn-ing
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,20 +13,20 @@ spec:
   source:
     chart: vcluster
     helm:
-      releaseName: k3s-rl-mlt-syn-ing
+      releaseName: k3s-fk-mlt-nsyn-ing
       parameters:
       - name: service.type
         value: ClusterIP
       - name: syncer.extraArgs
-        value: '{--tls-san=k3s-rl-mlt-syn-ing.multi.172.18.0.3.nip.io,k3s-rl-mlt-syn-ing}'
+        value: '{--tls-san=k3s-fk-mlt-nsyn-ing.multi.172.18.0.3.nip.io,k3s-fk-mlt-nsyn-ing}'
       - name: vcluster.image
         value: 'rancher/k3s:v1.21.2-k3s1'
       - name: sync.nodes.syncAllNodes
-        value: 'true'
+        value: 'false'
       - name: sync.nodes.enabled
-        value: 'true' 
+        value: 'false' 
       - name: sync.nodes.syncNodeChanges
-        value: 'true'
+        value: 'false'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
