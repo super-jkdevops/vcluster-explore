@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vcluster-k8s-121
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: k8s
+    server: https://kubernetes.default.svc
+  project: vcluster-gitops
+  source:
+    chart: vcluster-k8s
+    helm:
+      releaseName: vcluster-k8s-121
+      parameters:
+      - name: service.type
+        value: ClusterIP
+      - name: serviceCIDR
+        value: "10.43.0.0/12"
+      - name: syncer.extraArgs
+        value: '{--tls-san=vcluster-k8s-121.k8s.172.18.0.3.nip.io,vcluster-k8s-121}'
+      - name: enableHA
+        value: 'true'
+      - name: syncer.replicas
+        value: '3'
+      - name: etcd.image
+        value: 'k8s.gcr.io/etcd:3.4.13-0'
+      - name: etcd.replicas
+        value: '3'
+      - name: controller.image
+        value: 'k8s.gcr.io/kube-controller-manager:v1.21.5'
+      - name: controller.replicas
+        value: '3'
+      - name: api.image
+        value: 'k8s.gcr.io/kube-apiserver:v1.21.5'
+      - name: api.replicas
+        value: '3'
+    repoURL: https://charts.loft.sh/
+    targetRevision: 0.6.0
+  syncPolicy:
+    automated:
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
