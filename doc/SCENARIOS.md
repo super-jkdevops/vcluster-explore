@@ -15,3 +15,7 @@
 
 * ha mode   - enable high availability cluster components multiple API server, backend database, controllers etc
 * sync mode - for fake clusters node synchronization stay disable on all dinmentions
+
+### Images versions, locations etc.
+
+TBD
