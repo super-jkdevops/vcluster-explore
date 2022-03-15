@@ -75,8 +75,8 @@ Docker Hub (rancher)
 
 `One binary distribution`
 
-| Component name          | URL                                  | Image URL             |
-|-------------------------|:-------------------------------------|:----------------------|
+| Component name          | URL                                  | Image URL               |
+|-------------------------|:-------------------------------------|:------------------------|
 | API Server + SQLLITE DB | https://hub.docker.com/r/rancher/k3s | rancher/k3s:\<version\> |
 
 *ArgoCD deployment values*
@@ -90,8 +90,8 @@ Docker Hub (k0sproject)
 
 `One binnary distribution`
 
-| Component name          | URL                                     | Image URL		       |
-|-------------------------|:----------------------------------------|:-------------------------|
+| Component name          | URL                                     | Image URL		         |
+|-------------------------|:----------------------------------------|:---------------------------|
 | API Server + SQLLITE DB | https://hub.docker.com/r/k0sproject/k0s | k0sproject/k0s:\<version\> |
 
 *ArgoCD deployment values*
@@ -107,12 +107,12 @@ https://gallery.ecr.aws/
 
 `Multiple components distribution`
 
-| Component name     | URL                                                                   | Image URL                    				              |
-|--------------------|:----------------------------------------------------------------------|:-----------------------------------------------------------------------|
-| API Server         | https://gallery.ecr.aws/eks-distro/kubernetes/kube-apiserver          | public.ecr.aws/eks-distro/kubernetes/kube-apiserver:\<version>          |
+| Component name     | URL                                                                   | Image URL                    				                |
+|--------------------|:----------------------------------------------------------------------|:-------------------------------------------------------------------------|
+| API Server         | https://gallery.ecr.aws/eks-distro/kubernetes/kube-apiserver          | public.ecr.aws/eks-distro/kubernetes/kube-apiserver:\<version>           |
 | Controller Manager | https://gallery.ecr.aws/eks-distro/kubernetes/kube-controller-manager | public.ecr.aws/eks-distro/kubernetes/kube-controller-manager:\<version\> |
-| ETCD Config DB     | https://gallery.ecr.aws/eks-distro/etcd-io/etcd                       | public.ecr.aws/eks-distro/etcd-io/etcd:\<version\>			      |
-| CoreDNS            | https://gallery.ecr.aws/eks-distro/coredns/coredns                    | public.ecr.aws/eks-distro/coredns/coredns:\<version\>		      |
+| ETCD Config DB     | https://gallery.ecr.aws/eks-distro/etcd-io/etcd                       | public.ecr.aws/eks-distro/etcd-io/etcd:\<version\>	                |
+| CoreDNS            | https://gallery.ecr.aws/eks-distro/coredns/coredns                    | public.ecr.aws/eks-distro/coredns/coredns:\<version\>		        |
 
 *ArgoCD deployment values*
 
@@ -131,8 +131,8 @@ https://gallery.ecr.aws/
 Google Container Registry
 https://console.cloud.google.com/gcr/images/google-containers/
 
-| Component name     |                                                                                              | Image URL                                    |
-|--------------------|:---------------------------------------------------------------------------------------------|:---------------------------------------------|
+| Component name     |                                                                                              | Image URL                                      |
+|--------------------|:---------------------------------------------------------------------------------------------|:-----------------------------------------------|
 | API Server         | https://console.cloud.google.com/gcr/images/google-containers/global/kube-apiserver          | k8s.gcr.io/kube-apiserver:\<version\>          |
 | Controller Manager | https://console.cloud.google.com/gcr/images/google-containers/global/kube-controller-manager | k8s.gcr.io/kube-controller-manager:\<version\> |
 | ETCD Config DB     | https://console.cloud.google.com/gcr/images/google-containers/global/etcd                    | k8s.gcr.io/etcd:\<version\>                    |
