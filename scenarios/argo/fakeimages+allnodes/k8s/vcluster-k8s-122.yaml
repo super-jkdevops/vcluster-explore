@@ -1,28 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-eks-121
+  name: vcluster-k8s-122
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: eks
+    namespace: k8s
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    chart: vcluster-eks
+    chart: vcluster-k8s
     helm:
-      releaseName: vcluster-eks-121
+      releaseName: vcluster-k8s-122
       parameters:
       - name: service.type
         value: ClusterIP
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-eks-121.eks.172.18.0.3.nip.io,172.18.0.3,vcluster-eks-121}'
-      - name: syncer.replicas
-        value: '3'
+        value: '{--tls-san=vcluster-k8s-122.k8s.172.18.0.3.nip.io,vcluster-k8s-122}'
+
       - name: sync.services.enabled
         value: 'true'
       - name: sync.configmaps.enabled
@@ -44,13 +43,13 @@ spec:
       - name: sync.fake-persistentvolumes.enabled
         value: 'true'
       - name: sync.nodes.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.nodes.syncAllNodes
-        value: 'false'
+        value: 'true'
       - name: sync.nodes.nodeSelector
         value: ''
       - name: sync.nodes.syncNodeChanges
-        value: 'false'
+        value: 'true'
       - name: sync.persistentvolumes.enabled
         value: 'true'
       - name: sync.storageclasses.enabled
@@ -63,23 +62,27 @@ spec:
         value: 'false'
       - name: sync.poddisruptionbudgets.enabled
         value: 'false'
-      - name: etcd.replicas
-        value: '3' 
+
+      - name: enableHA
+        value: 'true'
+      - name: syncer.replicas
+        value: '3'
       - name: etcd.image
-        value: 'public.ecr.aws/eks-distro/etcd-io/etcd:v3.4.16-eks-1-21-8'
-      - name: controller.replicas
+        value: 'k8s.gcr.io/etcd:3.5.1-0'
+      - name: etcd.replicas
         value: '3'
       - name: controller.image
-        value: 'public.ecr.aws/eks-distro/kubernetes/kube-controller-manager:v1.21.5-eks-1-21-8'
-      - name: api.replicas
+        value: 'k8s.gcr.io/kube-controller-manager:v1.22.4'
+      - name: controller.replicas
         value: '3'
       - name: api.image
-        value: 'public.ecr.aws/eks-distro/kubernetes/kube-apiserver:v1.21.5-eks-1-21-8'
-      - name: coredns.image
-        value: 'public.ecr.aws/eks-distro/coredns/coredns:v1.8.4-eks-1-21-8'
+        value: 'k8s.gcr.io/kube-apiserver:v1.22.4'
+      - name: api.replicas
+        value: '3'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
-    automated: {}
+    automated:
+      selfHeal: false
     syncOptions:
     - CreateNamespace=true
