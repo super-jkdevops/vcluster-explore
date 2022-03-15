@@ -85,6 +85,20 @@ Docker Hub (rancher)
   value: '<adjust>'
 ```
 
+*Versions*:
+- [ ] v1.23.3-k3s1
+- [ ] v1.22.6-k3s1
+- [ ] v1.21.9-k3s1
+- [ ] v1.20.15-k3s1
+- [ ] v1.19.13-k3s1
+- [ ] v1.18.20-k3s1
+- [ ] v1.17.17-k3s1
+
+<!--
+TBD!
+* marked by X if tested + adding badge action status
+-->
+
 ---
 
 #### K0s
@@ -101,6 +115,17 @@ Docker Hub (k0sproject)
 - name: vcluster.image
   value: '<adjust>'
 ```
+
+*Versions*:
+
+- [ ] v1.23.3-k0s.0
+- [ ] v1.22.6-k0s.0
+
+<!--
+TBD!
+* marked by X if tested + adding badge action status
+-->
+
 
 ---
 
@@ -130,6 +155,16 @@ https://gallery.ecr.aws/
   value: '<adjust>'
 ```
 
+*Versions*:
+
+- [ ] v1.21.5-eks-1-21-8
+- [ ] v1.22.6-eks-1-22-1
+
+<!--
+TBD!
+* marked by X if tested + adding badge action status
+-->
+
 ---
 
 #### K8s (vanilla)
@@ -151,3 +186,14 @@ https://console.cloud.google.com/gcr/images/google-containers/
 - name: api.image
   value: '<adjust>'
 ```
+
+*Versions*:
+
+- [ ] v1.21.5
+- [ ] v1.22.4
+- [ ] v1.23.1
+
+<!--
+TBD!
+* marked by X if tested + adding badge action status
+-->
