@@ -85,6 +85,8 @@ Docker Hub (rancher)
   value: '<adjust>'
 ```
 
+---
+
 #### K0s
 Docker Hub (k0sproject)
 
@@ -100,6 +102,7 @@ Docker Hub (k0sproject)
   value: '<adjust>'
 ```
 
+---
 
 #### EKS
 Amazon ECR Public Gallery
@@ -126,6 +129,8 @@ https://gallery.ecr.aws/
 - name: coredns.image
   value: '<adjust>'
 ```
+
+---
 
 #### K8s (vanilla)
 Google Container Registry
