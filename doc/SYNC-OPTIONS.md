@@ -4,6 +4,7 @@ You can find all information about syncing respurces on [vcluster documentation]
 I attached only several interesting scenarios
 
 
+<!--
 **Real** - giving impression that user is operating on real cluster:
 
 sets of values:
@@ -131,3 +132,4 @@ pod/test-7c68854699-44zn2   0/1     Pending   0          21s
 
 `Showing up Pending state, it looks me to bug. The reason of pending state is that
 pods status is exposing to the cluster by nodes and nodes are not visible!`
+-->
