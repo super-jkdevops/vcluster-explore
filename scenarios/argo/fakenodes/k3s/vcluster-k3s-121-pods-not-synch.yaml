@@ -1,27 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-k8s-122
+  name: vcluster-k3s-121-no-pods
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: k8s
+    namespace: k3s
     server: https://kubernetes.default.svc
   project: vcluster-gitops
   source:
-    chart: vcluster-k8s
+    chart: vcluster
     helm:
-      releaseName: vcluster-k8s-122
+      releaseName: vcluster-k3s-121-no-pods
       parameters:
       - name: service.type
         value: ClusterIP
-      - name: serviceCIDR
-        value: "10.43.0.0/12"
+      - name: vcluster.image
+        value: 'rancher/k3s:v1.21.9-k3s1'
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k8s-122.k8s.172.18.0.3.nip.io,vcluster-k8s-122}'
-
+        value: '{--tls-san=vcluster-k3s-121-no-pods.172.18.0.3.nip.io,vcluster-k3s-121-no-pods}'
+      - name: syncer.replicas
+        value: '1'
       - name: sync.services.enabled
         value: 'true'
       - name: sync.configmaps.enabled
@@ -31,7 +32,7 @@ spec:
       - name: sync.endpoints.enabled
         value: 'true'
       - name: sync.pods.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.events.enabled
         value: 'true'
       - name: sync.persistentvolumeclaims.enabled
@@ -43,13 +44,13 @@ spec:
       - name: sync.fake-persistentvolumes.enabled
         value: 'true'
       - name: sync.nodes.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.nodes.syncAllNodes
-        value: 'true'
+        value: 'false'
       - name: sync.nodes.nodeSelector
         value: ''
       - name: sync.nodes.syncNodeChanges
-        value: 'true'
+        value: 'false'
       - name: sync.persistentvolumes.enabled
         value: 'true'
       - name: sync.storageclasses.enabled
@@ -62,27 +63,9 @@ spec:
         value: 'false'
       - name: sync.poddisruptionbudgets.enabled
         value: 'false'
-
-      - name: enableHA
-        value: 'true'
-      - name: syncer.replicas
-        value: '3'
-      - name: etcd.image
-        value: 'k8s.gcr.io/etcd:3.5.1-0'
-      - name: etcd.replicas
-        value: '3'
-      - name: controller.image
-        value: 'k8s.gcr.io/kube-controller-manager:v1.22.4'
-      - name: controller.replicas
-        value: '3'
-      - name: api.image
-        value: 'k8s.gcr.io/kube-apiserver:v1.22.4'
-      - name: api.replicas
-        value: '3'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
-    automated:
-      selfHeal: false
+    automated: {}
     syncOptions:
     - CreateNamespace=true

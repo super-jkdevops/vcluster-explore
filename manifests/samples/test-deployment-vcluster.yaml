@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: apps
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: apps
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -9,7 +9,7 @@ metadata:
   labels:
     app: test
   name: test
-  namespace: apps
+  #namespace: apps
 spec:
   replicas: 3
   selector:
@@ -32,7 +32,7 @@ metadata:
   labels:
     app: test
   name: test
-  namespace: apps
+#  namespace: apps
 spec:
   ports:
   - port: 80

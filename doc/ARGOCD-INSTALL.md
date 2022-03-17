@@ -29,31 +29,13 @@ flux bootstrap github --owner=$GH_FLUX_USER \
 
 `Above command will install Argocd in argo way apps of apps`
 
-### bootstrap flux 2 within 2 virtual clusters (vcluster-a/vcluster-b)
-Deploy ArgoCD across vCluster-a and vCluster-b using flux infrastructure.
-
-#### vcluster-a
+#### vcluster-k8s-123
 ```
-flux bootstrap github --kubeconfig tmp/vcluster-a-kubeconfig-team-c.yaml \
+flux bootstrap github --kubeconfig tmp/vcluster-k8s-123-kubeconfig.yaml \
   --owner=$GH_FLUX_USER \
   --repository=flux-fleet-platform \
   --branch=main \
-  --path=./clusters/vcluster-demo-a \
-  --owner=devopsapp84 \
-  --log-level=debug \
-  --network-policy=false \
-  --author-email="janusz.kujawa@gmail.com" \
-  --author-name="Janusz Kujawa" \
-  --components-extra=image-reflector-controller,image-automation-controller 
-```
-
-#### vcluster-b
-```
-flux bootstrap github --kubeconfig tmp/vcluster-b-kubeconfig-team-c.yaml \
-  --owner=$GH_FLUX_USER \
-  --repository=flux-fleet-platform \
-  --branch=main \
-  --path=./clusters/vcluster-demo-b \
+  --path=./clusters/vcluster-k8s-123 \
   --owner=devopsapp84 \
   --log-level=debug \
   --network-policy=false \
