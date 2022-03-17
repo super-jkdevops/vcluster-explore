@@ -1,0 +1,58 @@
+serviceCIDR: "10.43.0.0/12"
+enableHA: true
+
+sync:
+  services:
+    enabled: false
+  configmaps:
+    enabled: true
+  secrets:
+    enabled: true
+  endpoints:
+    enabled: true
+  pods:
+    enabled: true
+  events:
+    enabled: true
+  persistentvolumeclaims:
+    enabled: true
+  ingresses:
+    enabled: true
+  fake-nodes:
+    enabled: true # will be ignored if nodes.enabled = true
+  fake-persistentvolumes:
+    enabled: true # will be ignored if persistentvolumes.enabled = true
+  nodes:
+    enabled: false
+    syncAllNodes: false
+    nodeSelector: ""
+    syncNodeChanges: false
+  persistentvolumes:
+    enabled: false
+  storageclasses:
+    enabled: false
+  priorityclasses:
+    enabled: false
+  networkpolicies:
+    enabled: false
+  volumesnapshots:
+    enabled: false
+  poddisruptionbudgets:
+    enabled: false
+  serviceaccounts:
+    enabled: false
+
+syncer:
+  replicas: 3
+
+etcd:
+  image: k8s.gcr.io/etcd:3.5.1-0
+  replicas: 3
+
+controller:
+  image: k8s.gcr.io/kube-controller-manager:v1.23.1
+  replicas: 3
+
+api:
+  image: k8s.gcr.io/kube-apiserver:v1.23.1
+  replicas: 3
