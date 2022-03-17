@@ -3,7 +3,7 @@ enableHA: true
 
 sync:
   services:
-    enabled: false
+    enabled: true
   configmaps:
     enabled: true
   secrets:
@@ -15,7 +15,7 @@ sync:
   events:
     enabled: true
   persistentvolumeclaims:
-    enabled: true
+    enabled: false
   ingresses:
     enabled: true
   fake-nodes:
@@ -43,16 +43,19 @@ sync:
     enabled: false
 
 syncer:
-  replicas: 3
+  replicas: 1
 
 etcd:
   image: k8s.gcr.io/etcd:3.5.1-0
-  replicas: 3
+  replicas: 1
 
 controller:
   image: k8s.gcr.io/kube-controller-manager:v1.23.1
-  replicas: 3
+  replicas: 1
 
 api:
   image: k8s.gcr.io/kube-apiserver:v1.23.1
-  replicas: 3
+  replicas: 1
+
+isolation:
+  enabled: false
