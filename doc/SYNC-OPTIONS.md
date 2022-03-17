@@ -134,6 +134,8 @@ vcluster-559d647669-kzsff              1/1     Running   1 (9m21s ago)   10m
 ```
 To sum up no evets about pods they remain in Pending state!
 
+---
+
 #### Events
 Isn't critical cause cluster can function without it however it is hard to determine
 pods status
