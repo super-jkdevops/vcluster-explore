@@ -193,6 +193,7 @@ https://console.cloud.google.com/gcr/images/google-containers/
 - [ ] v1.21.5
 - [ ] v1.22.4
 - [ ] v1.23.1
+- [ ] v1.23.4
 
 <!--
 TBD!
