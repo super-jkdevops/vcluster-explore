@@ -13,9 +13,9 @@ sync:
   pods:
     enabled: true
   events:
-    enabled: false
-  persistentvolumeclaims:
     enabled: true
+  persistentvolumeclaims:
+    enabled: false
   ingresses:
     enabled: true
   fake-nodes:
@@ -28,7 +28,7 @@ sync:
     nodeSelector: ""
     syncNodeChanges: false
   persistentvolumes:
-    enabled: true
+    enabled: false
   storageclasses:
     enabled: true
   priorityclasses:

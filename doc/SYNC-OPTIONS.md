@@ -168,8 +168,9 @@ Events:
 Let's assume vcluster users/admin will be not able to see kubernetes events that is big
 disadvantage!
 
-
 ---
+
+#### 
 
 ### Trying unrecognize sync option
 It is reflect only to v0.6.0 cause don't know if new cotrollers will appear.
