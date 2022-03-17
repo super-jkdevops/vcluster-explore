@@ -59,5 +59,6 @@ sync:
 ```
 
 **Very important!**
+<br>
 `These settings cannot be used combined because they are mutually exclusive. So at the begining we must
 deside which way suits better.`
