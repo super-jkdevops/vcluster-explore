@@ -30,7 +30,7 @@ sync:
   persistentvolumes:
     enabled: false
   storageclasses:
-    enabled: true
+    enabled: false
   priorityclasses:
     enabled: false
   networkpolicies:
