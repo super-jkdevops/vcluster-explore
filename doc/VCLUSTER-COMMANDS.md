@@ -49,8 +49,10 @@ $ vcluster resume -n k8s vcluster-k8s-123
 ## Connect Vcluster + adhoc commands
 Checking cluster without exposing outside.
 ```
-vcluster connect -n <vcluster_namespace> <vcluster_name> -- <kubectl commands>
+vcluster connect -n <vcluster_namespace> <vcluster_name> -- <kubectl_command>
 ```
+
+* Please adjust vcluster_name, vcluster_namespace and specify kubectl command
 
 ***example:***
 ```
