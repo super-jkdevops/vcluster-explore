@@ -13,7 +13,7 @@ sync:
   pods:
     enabled: true
   events:
-    enabled: true
+    enabled: false
   persistentvolumeclaims:
     enabled: true
   ingresses:
