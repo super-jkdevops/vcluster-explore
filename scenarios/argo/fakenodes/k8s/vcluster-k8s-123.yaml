@@ -21,7 +21,7 @@ spec:
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
         value: '{--tls-san=vcluster-k8s-123.k8s.172.18.0.3.nip.io,vcluster-k8s-123}'
-
+      
       - name: sync.services.enabled
         value: 'true'
       - name: sync.configmaps.enabled
@@ -53,15 +53,15 @@ spec:
       - name: sync.persistentvolumes.enabled
         value: 'true'
       - name: sync.storageclasses.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.priorityclasses.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.networkpolicies.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.volumesnapshots.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.poddisruptionbudgets.enabled
-        value: 'false'
+        value: 'true'
 
       - name: enableHA
         value: 'true'
@@ -82,7 +82,6 @@ spec:
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
-    automated:
-      selfHeal: false
+    automated: {}
     syncOptions:
     - CreateNamespace=true

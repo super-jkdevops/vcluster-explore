@@ -15,3 +15,9 @@ spec:
       mode: PASSTHROUGH
     hosts:
     - "*"
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"

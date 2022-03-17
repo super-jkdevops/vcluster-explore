@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-k8s-123
+  name: vcluster-k8s-123-4
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,15 +13,15 @@ spec:
   source:
     chart: vcluster-k8s
     helm:
-      releaseName: vcluster-k8s-123
+      releaseName: vcluster-k8s-123-4
       parameters:
       - name: service.type
         value: ClusterIP
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k8s-123.k8s.172.18.0.3.nip.io,vcluster-k8s-123}'
-
+        value: '{--tls-san=vcluster-k8s-123-4.k8s.172.18.0.3.nip.io,vcluster-k8s-123-4}'
+      
       - name: sync.services.enabled
         value: 'true'
       - name: sync.configmaps.enabled
@@ -45,23 +45,23 @@ spec:
       - name: sync.nodes.enabled
         value: 'false'
       - name: sync.nodes.syncAllNodes
-        value: 'true'
+        value: 'false'
       - name: sync.nodes.nodeSelector
         value: ''
       - name: sync.nodes.syncNodeChanges
-        value: 'true'
+        value: 'false'
       - name: sync.persistentvolumes.enabled
         value: 'true'
       - name: sync.storageclasses.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.priorityclasses.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.networkpolicies.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.volumesnapshots.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.poddisruptionbudgets.enabled
-        value: 'false'
+        value: 'true'
 
       - name: enableHA
         value: 'true'
@@ -72,17 +72,16 @@ spec:
       - name: etcd.replicas
         value: '3'
       - name: controller.image
-        value: 'k8s.gcr.io/kube-controller-manager:v1.23.1'
+        value: 'k8s.gcr.io/kube-controller-manager:v1.23.4'
       - name: controller.replicas
         value: '3'
       - name: api.image
-        value: 'k8s.gcr.io/kube-apiserver:v1.23.1'
+        value: 'k8s.gcr.io/kube-apiserver:v1.23.4'
       - name: api.replicas
         value: '3'
     repoURL: https://charts.loft.sh/
     targetRevision: 0.6.0
   syncPolicy:
-    automated:
-      selfHeal: false
+    automated: {}
     syncOptions:
     - CreateNamespace=true
