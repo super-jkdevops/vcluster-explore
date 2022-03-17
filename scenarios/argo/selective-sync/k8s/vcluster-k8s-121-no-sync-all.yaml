@@ -23,7 +23,7 @@ spec:
         value: '{--tls-san=vcluster-k8s-121-no-sync-all.k8s.172.18.0.3.nip.io,vcluster-k8s-121-no-sync-all}'
 
       - name: sync.services.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.configmaps.enabled
         value: 'true'
       - name: sync.secrets.enabled

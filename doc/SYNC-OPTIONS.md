@@ -3,6 +3,17 @@ You can find all information about syncing respurces on [vcluster documentation]
 
 I attached only several interesting scenarios
 
+## Critical settings
+According to documentation several settings shouldn't be touched cause
+changes value may cause your vcluster non-functional. What does it mean
+that you will have problems with managing objects, connect vcluster etc.
+Please do not modify following values it concerns both types of vcluster
+(fake cluster nodes compilation also real nodes!)
+
+
+- [X] Services: sync.services.enabled
+- [X] Nodes:    sync.pods.enabled
+
 
 <!--
 **Real** - giving impression that user is operating on real cluster:
