@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k0s-fk-s-i-ing
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: single
+    server: https://kubernetes.default.svc
+  project: vcluster-gitops
+  source:
+    chart: vcluster-k0s
+    helm:
+      releaseName: k0s-fk-s-i-ing
+      parameters:
+      - name: service.type
+        value: ClusterIP
+      - name: serviceCIDR
+        value: "10.43.0.0/12"
+      - name: syncer.extraArgs
+        value: '{--tls-san=k0s-fk-s-i-ing.single.172.18.0.3.nip.io}'
+      values: |-
+        serviceCIDR: "10.43.0.0/12"
+        vcluster:
+          image: k0sproject/k0s:v1.23.3-k0s.0
+        nodeSelector: {"k0s": "true"}
+    repoURL: https://charts.loft.sh/
+    targetRevision: 0.6.0
+  syncPolicy:
+    automated:
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
