@@ -19,19 +19,20 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 ![Comparation](https://www.vcluster.com/docs/media/vcluster-comparison.png)
 
 
-Steps:
+## Table of contents:
 1. [Intall binary](./doc/INSTALL.md)
 2. [Create host cluster K3D](./doc/HOST-CLUSTER.md)
-3. [Create vcluster manually only testing purpose](./doc/VIRTUAL-CLUSTER.md)
+3. [Create Vcluster manually only testing purpose](./doc/VIRTUAL-CLUSTER.md)<br>
+   3.1 [Vcluster commandline usefull features](./doc/VCLUSTER-COMMANDS.md)
 4. [Bootstrap ArgoCD with necessary application](./doc/ARGOCD-INSTALL.md)
-5. [ArgoCD deploy vcluster declarative way application deployment](./doc/ARGO-DEPLOYMENT.md)
+5. [ArgoCD deploy Vcluster declarative way application deployment](./doc/ARGO-DEPLOYMENT.md)
 6. [ArgoCD deployment multiple vcluster same namespace expose via istio](./doc/ARGOCD-MULTIPLE-VCLUSTER.md)
-7. [Different vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)
+7. [Different Vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)
 8. [Different scenarios](./doc/SCENARIOS.md)
-9.  [Deploy sample application on vcluster accessing via istio](./SAMPLE-APPS-VCLUSTER.md)
+9.  [Deploy sample application on Vcluster accessing via istio](./SAMPLE-APPS-VCLUSTER.md)
 10. [Sync scenarios cluster objects visibility](./doc/SYNC-OPTIONS.md)
 11. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
 12. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
-13. [Nesting vcluster (vcluster inside vcluster)](./doc/NESTING-VCLUSTER.md)
+13. [Nesting Vcluster (Vcluster inside Vcluster)](./doc/NESTING-VCLUSTER.md)
 14. [Hints and usefull commands](./doc/HINTS.md)
 15. [Draft ssl replacement and comparation](./doc/CERTIFICATE-REPLACEMENT-ATTEMPT.md)
