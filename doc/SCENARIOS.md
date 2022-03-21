@@ -204,7 +204,7 @@ https://console.cloud.google.com/gcr/images/google-containers/
 kubectl get secret -n k3s vc-vcluster-k3s-121 \
 	-o jsonpath='{.data.config}' | base64 -d | \
 	sed 's/^\([[:space:]]\+server:\).*/\1 \
-	https:\/\/vcluster-k3s-121/'
+	https:\/\/vcluster-k3s-121/' > ./tmp/kubeconfig-vcluster-k3s-121.yaml
 ```
 
 #### 122
@@ -212,7 +212,7 @@ kubectl get secret -n k3s vc-vcluster-k3s-121 \
 kubectl get secret -n k3s vc-vcluster-k3s-122 \
 	-o jsonpath='{.data.config}' | base64 -d | \
 	sed 's/^\([[:space:]]\+server:\).*/\1 \
-	https:\/\/vcluster-k3s-122/'
+	https:\/\/vcluster-k3s-122/' > ./tmp/kubeconfig-vcluster-k3s-122.yaml
 ```
 
 #### 123
@@ -220,7 +220,7 @@ kubectl get secret -n k3s vc-vcluster-k3s-122 \
 kubectl get secret -n k3s vc-vcluster-k3s-123 \
 	-o jsonpath='{.data.config}' | base64 -d | \
 	sed 's/^\([[:space:]]\+server:\).*/\1 \
-	https:\/\/vcluster-k3s-123/'
+	https:\/\/vcluster-k3s-123/' > ./tmp/kubeconfig-vcluster-k3s-123.yaml
 ```
 
 
