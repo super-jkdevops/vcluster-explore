@@ -35,11 +35,14 @@ ArgoCD app values:
 
 ```
 - name: sync.persistentvolumeclaims.enabled
-  value: 'false'
+  value: 'true'
+
 - name: sync.fake-persistentvolumes.enabled
   value: 'true'
+
 - name: sync.persistentvolumes.enabled
   value: 'false'
+
 - name: sync.storageclasses.enabled
   value: 'false'
 ```
@@ -95,7 +98,4 @@ persistentvolumeclaim/persistent-volume-claim-x-default-x-vcluster-k3s-123   Bou
 NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                                      STORAGECLASS   REASON   AGE
 persistentvolume/pvc-c89a9fe3-f29d-4076-b702-a5d3a5246d9d   5Gi        RWO            Delete           Bound    k3s/data-vcluster-k3s-123-0                                local-path              4m32s
 persistentvolume/pvc-e46fd86d-a183-46ac-84e0-c7f50f0b9713   1Gi        RWO            Delete           Bound    k3s/persistent-volume-claim-x-default-x-vcluster-k3s-123   local-path              2m51s
-
 ```
-
-
