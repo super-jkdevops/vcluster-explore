@@ -54,7 +54,7 @@ spec:
       - name: sync.persistentvolumes.enabled
         value: 'false'
       - name: sync.storageclasses.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.priorityclasses.enabled
         value: 'false'
       - name: sync.networkpolicies.enabled
