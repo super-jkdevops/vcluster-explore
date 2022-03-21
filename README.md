@@ -29,7 +29,7 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 6. [ArgoCD deployment multiple vcluster same namespace expose via istio](./doc/ARGOCD-MULTIPLE-VCLUSTER.md)
 7. [Different Vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)
 8. [Different scenarios](./doc/SCENARIOS.md)
-9.  [Vcluster Deploy sample application ](./SAMPLE-APPS-VCLUSTER.md)
+9.  [Vcluster sample application deployment](./doc/SAMPLE-APPS-VCLUSTER.md)
 10. [Sync modes](./doc/SYNC-MODES.md)<br>
     10.1 [Sync critical objectives](./doc/SYNC-OPTIONS.md)<br>
     10.2 [Sync storage](./doc/SYNC-STORAGE.md)<br>
