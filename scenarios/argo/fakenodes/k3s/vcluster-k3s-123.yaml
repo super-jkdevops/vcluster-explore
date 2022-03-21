@@ -52,7 +52,7 @@ spec:
       - name: sync.nodes.syncNodeChanges
         value: 'false'
       - name: sync.persistentvolumes.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.storageclasses.enabled
         value: 'false'
       - name: sync.priorityclasses.enabled

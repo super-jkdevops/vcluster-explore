@@ -32,5 +32,42 @@ git -C /tmp/ clone https://github.com/rancher/local-path-provisioner
 
 ***Install storage path provisioner in kube-system***
 ```
-vcluster connect -n tests vcluster -- helm install local-path --namespace kube-system /tmp/local-path-provisioner/deploy/chart -v storageClass.defaultClass=true
+$ vcluster connect -n tests vcluster -- helm install local-path --namespace kube-system /tmp/local-path-provisioner/deploy/chart --set storageClass.defaultClass=true
+
+$ vcluster connect -n k3s vcluster-k3s-123 -- helm list -n kube-system
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
+local-path      kube-system     1               2022-03-21 12:16:49.830267678 +0100 CET deployed        local-path-provisioner-0.0.21   v0.0.21
+
+$ vcluster connect -n k3s vcluster-k3s-123 -- helm status -n kube-system local-path
+NAME: local-path
+.
+..
+...
+      storage: 2Gi
 ```
+
+#### Deploy sample application
+```
+$ kubectl apply -f manifests/samples/test-storage-pod.yaml \
+	-f manifests/samples/test-storage-pvc.yaml \
+        --kubeconfig=./tmp/kubeconfig-vcluster-k3s-123.yaml
+
+pod/volume-test created
+persistentvolumeclaim/persistent-volume-claim created
+```
+
+#### Verify process
+
+Checking host cluster, vcluster exists within k3s namespace:
+
+```
+$ kubectl get pvc -n k3s
+NAME                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+data-vcluster-k3s-123-0   Bound    pvc-b0e1f5e9-40bc-45c5-922a-5bff89185b10   5Gi        RWO            local-path     39m
+
+$ kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                         STORAGECLASS   REASON   AGE
+pvc-b0e1f5e9-40bc-45c5-922a-5bff89185b10   5Gi        RWO            Delete           Bound    k3s/data-vcluster-k3s-123-0   local-path              39m
+```
+
+`Storage assignments does not exist within host cluster. Above outputs show only only 1 pv that is for internal vcluster use. Even though vcluster has own storage provisioner it must stores some internal information (config database k3s etc). Please do not mix them!`
