@@ -170,7 +170,41 @@ disadvantage!
 
 ---
 
-#### 
+#### fake-persistentvolumes
+Require installing storage class and storage provisioners. It can be [local-path-provisiooner](https://github.com/rancher/local-path-provisioner/tree/master/deploy/chart) from rancher.
+
+```
+$ vcluster connect -n tests vcluster -- helm install local-path --namespace local-path-storage . -f values.yaml --create-namespace
+NAME: local-path
+LAST DEPLOYED: Thu Mar 17 15:33:59 2022
+NAMESPACE: local-path-storage
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+You can create a hostpath-backed persistent volume with a persistent volume claim like this:
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-path-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 2Gi
+
+$ vcluster connect -n tests vcluster -- helm list -A
+NAME            NAMESPACE               REVISION        UPDATED                                 STATUS          CHART                              APP VERSION
+local-path      local-path-storage      1               2022-03-17 15:33:59.23784326 +0100 CET  deployed        local-path-provisioner-0.0.21      v0.0.21
+```
+
+Testcase: https://rancher.com/docs/k3s/latest/en/storage/
+```
+
+```
 
 ### Trying unrecognize sync option
 It is reflect only to v0.6.0 cause don't know if new cotrollers will appear.
