@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: app01-vs
+  namespace: k3s
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-ingress/vcluster
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: app01-x-apps-x-vcluster-k3s-123

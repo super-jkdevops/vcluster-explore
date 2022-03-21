@@ -195,6 +195,35 @@ https://console.cloud.google.com/gcr/images/google-containers/
 - [ ] v1.23.1
 - [ ] v1.23.4
 
+## Kubeconfig extraction
+
+### k3s
+
+#### 121
+```
+kubectl get secret -n k3s vc-vcluster-k3s-121 \
+	-o jsonpath='{.data.config}' | base64 -d | \
+	sed 's/^\([[:space:]]\+server:\).*/\1 \
+	https:\/\/vcluster-k3s-121/' > ./tmp/kubeconfig-vcluster-k3s-121.yaml
+```
+
+#### 122
+```
+kubectl get secret -n k3s vc-vcluster-k3s-122 \
+	-o jsonpath='{.data.config}' | base64 -d | \
+	sed 's/^\([[:space:]]\+server:\).*/\1 \
+	https:\/\/vcluster-k3s-122/' > ./tmp/kubeconfig-vcluster-k3s-122.yaml
+```
+
+#### 123
+```
+kubectl get secret -n k3s vc-vcluster-k3s-123 \
+	-o jsonpath='{.data.config}' | base64 -d | \
+	sed 's/^\([[:space:]]\+server:\).*/\1 \
+	https:\/\/vcluster-k3s-123/' > ./tmp/kubeconfig-vcluster-k3s-123.yaml
+```
+
+
 <!--
 TBD!
 * marked by X if tested + adding badge action status

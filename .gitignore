@@ -2,3 +2,4 @@ kubeconfig.yaml
 .vscode/**
 tmp/**
 terraform/**
+scenarios/argo/selective-sync/**
