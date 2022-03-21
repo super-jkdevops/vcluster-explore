@@ -1,6 +1,6 @@
 # Sample applications
 
-`Before you start make sure that:```
+`Before you start make sure that:`
 
 - [X] Host Cluster - Istio Gateway contains http port definition (80)
 - [X] vCluster has been deployed alongside host cluster (please choose one of scenario doesn't matter which one!)
