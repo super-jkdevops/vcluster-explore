@@ -64,7 +64,7 @@ spec:
       - name: sync.poddisruptionbudgets.enabled
         value: 'false'
     repoURL: https://charts.loft.sh/
-    targetRevision: 0.6.0
+    targetRevision: 0.7.0
   syncPolicy:
     automated: {}
     syncOptions:
