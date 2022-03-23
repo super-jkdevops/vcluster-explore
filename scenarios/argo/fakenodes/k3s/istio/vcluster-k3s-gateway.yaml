@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: vcluster-k3s
+  namespace: istio-ingress
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: vcluster-k3s-123-cert
+    hosts:
+    - "vcluster-k3s.172.27.0.3.nip.io"

@@ -1,17 +1,18 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: argocd
+  name: vcluster-k8s
   namespace: istio-ingress
 spec:
   selector:
     istio: ingress
   servers:
   - port:
-      number: 8443
+      number: 443
       name: https
       protocol: HTTPS
     tls:
-      mode: PASSTHROUGH
+      mode: SIMPLE
+      credentialName: vcluster-k8s-123-cert
     hosts:
-    - "*"
+    - "vcluster-k8s.172.27.0.3.nip.io"

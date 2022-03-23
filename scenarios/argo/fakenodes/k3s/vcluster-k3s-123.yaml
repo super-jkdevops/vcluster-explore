@@ -20,7 +20,7 @@ spec:
       - name: vcluster.image
         value: 'rancher/k3s:v1.23.3-k3s1'
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k3s-123.k3s.svc.cluster.local}'
+        value: '{--tls-san=vcluster-k3s.172.27.0.3.nip.io}'
       - name: syncer.replicas
         value: '1'
       - name: sync.services.enabled
@@ -38,7 +38,7 @@ spec:
       - name: sync.persistentvolumeclaims.enabled
         value: 'true'
       - name: sync.ingresses.enabled
-        value: 'false'
+        value: 'true'
       - name: sync.fake-nodes.enabled
         value: 'true'
       - name: sync.fake-persistentvolumes.enabled

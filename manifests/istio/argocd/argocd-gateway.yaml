@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: argocd
+  namespace: istio-ingress
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: PASSTHROUGH
+    hosts:
+    - "argocd-server.argocd.172.27.0.3.nip.io"

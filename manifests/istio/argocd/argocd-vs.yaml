@@ -1,0 +1,24 @@
+###
+# ArgoCD deployed in vcluster-b
+###
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: argocd-vs
+  namespace: argocd
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-ingress/argocd
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - "*"
+    route:
+    - destination:
+        host: argocd-server
+        port:
+          number: 8443

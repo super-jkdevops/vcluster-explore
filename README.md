@@ -33,8 +33,12 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 10. [Sync modes](./doc/SYNC-MODES.md)<br>
     10.1 [Sync critical objectives](./doc/SYNC-OPTIONS.md)<br>
     10.2 [Sync storage](./doc/SYNC-STORAGE.md)<br>
-11. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
-12. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
-13. [Nesting Vcluster (Vcluster inside Vcluster)](./doc/NESTING-VCLUSTER.md)
-14. [Hints and usefull commands](./doc/HINTS.md)
-15. [Draft ssl replacement and comparation](./doc/CERTIFICATE-REPLACEMENT-ATTEMPT.md)
+11. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)
+    11.1 [Istio - passthrough](./doc/ISTIO-PASSTHROUGH.md)<br>
+    11.2 [Istio - tls termination](./doc/ISTIO-TLS-TERMINATION.md)<br>
+    11.3 [Istio - mutual tls](./doc/ISTIO-MTLS.md)<br>
+12. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
+13. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
+14. [Nesting Vcluster (Vcluster inside Vcluster)](./doc/NESTING-VCLUSTER.md)
+15. [Hints and usefull commands](./doc/HINTS.md)
+16. [Draft ssl replacement and comparation](./doc/CERTIFICATE-REPLACEMENT-ATTEMPT.md)
