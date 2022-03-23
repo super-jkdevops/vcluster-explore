@@ -30,13 +30,13 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 7. [Different Vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)
 8. [Different scenarios](./doc/SCENARIOS.md)
 9.  [Vcluster sample application deployment](./doc/SAMPLE-APPS-VCLUSTER.md)
-10. [Sync modes](./doc/SYNC-MODES.md)<br>
-    10.1 [Sync critical objectives](./doc/SYNC-OPTIONS.md)<br>
-    10.2 [Sync storage](./doc/SYNC-STORAGE.md)<br>
-11. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)<br>
+10. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)<br>
     11.1 [Istio - passthrough](./doc/ISTIO-PASSTHROUGH.md)<br>
     11.2 [Istio - tls termination](./doc/ISTIO-TLS-TERMINATION.md)<br>
     11.3 [Istio - mutual tls](./doc/ISTIO-MTLS.md)<br>
+11. [Sync modes](./doc/SYNC-MODES.md)<br>
+    10.1 [Sync critical objectives](./doc/SYNC-OPTIONS.md)<br>
+    10.2 [Sync storage](./doc/SYNC-STORAGE.md)<br>
 12. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
 13. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
 14. [Nesting Vcluster (Vcluster inside Vcluster)](./doc/NESTING-VCLUSTER.md)
