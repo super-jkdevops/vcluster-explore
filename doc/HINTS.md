@@ -2,7 +2,7 @@
 
 - [X] vcluster.yaml incorrect syntax
     It should be:
-```
+```yaml
 serviceCIDR: "10.43.0.1/12"
 vcluster:
   image: rancher/k3s:v1.19.5-k3s2 
@@ -10,7 +10,7 @@ vcluster:
 
 instead
 
-```
+```yaml
 vcluster:
   image: rancher/k3s:v1.19.5-k3s2    
   extraArgs:
@@ -22,7 +22,7 @@ vcluster:
 example:
 
 *pod status:*
-```
+```shell
 NAME                                                  READY   STATUS              RESTARTS   AGE
 svclb-vcluster-a-c6pg8                                1/1     Running             0          72s
 svclb-vcluster-a-5dmm7                                1/1     Running             0          72s
@@ -41,7 +41,7 @@ vcluster-aaa-0                                        0/2     ContainerCreating 
 ```
 
 *service status*:
-```
+```shell
 vcluster-a-headless                         ClusterIP      None            <none>                             443/TCP                  82s
 vcluster-a                                  LoadBalancer   10.43.77.12     172.30.0.2,172.30.0.3,172.30.0.4   443:30161/TCP            82s
 kube-dns-x-kube-system-x-vcluster-a         ClusterIP      10.43.158.219   <none>                             53/UDP,53/TCP,9153/TCP   76s
@@ -60,12 +60,12 @@ Just use standard tools:
 - [X] kubectl
 - [X] base64
 
-```
+```console
 kubectl get secret -n team-c vc-vcluster -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster.team-c.'"$INGRESS"'.nip.io/'
 ```
 
 ### Vanilla K8s explore
 
-```
+```console
 kubectl get secret -n team-h vcluster-h-certs -o jsonpath='{.data.admin\.conf}'  | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-h-api.'"$INGRESS"'.nip.io/'
 ```

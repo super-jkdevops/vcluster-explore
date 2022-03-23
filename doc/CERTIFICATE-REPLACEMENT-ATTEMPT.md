@@ -1,7 +1,7 @@
 ### CA
 
 **kubeconfig**
-```
+```bash
 $ cat kubeconfig.yaml | yq '.clusters[].cluster.certificate-authority-data' | base64 -d
 -----BEGIN CERTIFICATE-----
 MIIBeDCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
@@ -16,7 +16,7 @@ lXnlwC+zDs1dAiEAh3Ui1CwXzD5NvD6bP4RvyS3uPDwCT1ajemGXDwa7sjo=
 ```
 
 **secret extraction**
-```
+```bash
 $ kubectl get secrets -n team-d vc-vcluster-d -o jsonpath='{.data.certificate-authority}' | base64 -d
 -----BEGIN CERTIFICATE-----
 MIIBeDCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
@@ -34,7 +34,7 @@ lXnlwC+zDs1dAiEAh3Ui1CwXzD5NvD6bP4RvyS3uPDwCT1ajemGXDwa7sjo=
 ### Client certificate
 
 **kubeconfig**
-```
+```bash
 $ cat kubeconfig.yaml | yq '.users[].user.client-certificate-data' | base64 -d
 -----BEGIN CERTIFICATE-----
 MIIBkjCCATegAwIBAgIIN2jXfw+xZbkwCgYIKoZIzj0EAwIwIzEhMB8GA1UEAwwY
@@ -60,7 +60,7 @@ KssofgjzvacCIQC7JkAqhfN4EZSdk39tS0wYvVHNCc/DUUz/s96NdM6uHQ==
 ```
 
 **secret extraction**
-```
+```bash
 $ kubectl get secrets -n team-d vc-vcluster-d -o jsonpath='{.data.client-certificate}' | base64 -d
 -----BEGIN CERTIFICATE-----
 MIIBkjCCATegAwIBAgIIN2jXfw+xZbkwCgYIKoZIzj0EAwIwIzEhMB8GA1UEAwwY
@@ -90,7 +90,7 @@ KssofgjzvacCIQC7JkAqhfN4EZSdk39tS0wYvVHNCc/DUUz/s96NdM6uHQ==
 
 
 **kubeconfig:**
-```
+```bash
 $ cat kubeconfig.yaml | yq '.users[].user.client-key-data' | base64 -d
 -----BEGIN EC PRIVATE KEY-----
 MHcCAQEEINbf3SGkYfxnp+OeJ19wpv/4VW3ntwSpuz7Zc3VGzZDJoAoGCCqGSM49
@@ -100,7 +100,7 @@ IpWYEJ2VTq7vtH03KdUGMRM7cA6ZPyLt0g==
 ```
 
 **secret extraction:**
-```
+```bash
 $ kubectl get secrets -n team-d vc-vcluster-d -o jsonpath='{.data.client-key}' | base64 -d
 -----BEGIN EC PRIVATE KEY-----
 MHcCAQEEINbf3SGkYfxnp+OeJ19wpv/4VW3ntwSpuz7Zc3VGzZDJoAoGCCqGSM49
