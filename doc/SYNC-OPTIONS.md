@@ -214,7 +214,7 @@ It is reflect only to v0.6.0 cause don't know if new cotrollers will appear.
   value: true
 ```
 
-```error
+```shell
 F0317 13:03:33.001150       1 main.go:32] create controller context: unrecognized controller deployments, available controllers: configmaps, secrets, persistentvolumeclaims, ingresses, priorityclasses, networkpolicies, services, fake-nodes, storageclasses, endpoints, pods, events, persistentvolumes, poddisruptionbudgets, serviceaccounts, fake-persistentvolumes, nodes, volumesnapshots
 ```
 

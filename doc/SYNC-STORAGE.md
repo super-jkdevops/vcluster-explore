@@ -33,7 +33,7 @@ This approach is moving responsibility for storeg to vcluster owners.
 
 ArgoCD app values:
 
-```
+```yaml
 - name: sync.persistentvolumeclaims.enabled
   value: 'true'
 
@@ -53,12 +53,12 @@ I assume that your vCluster has deployed then exposed through istio ingress gate
 #### Installing local-path-provisioner from Rancher
 
 ***clone repository:***
-```
+```console
 git -C /tmp/ clone https://github.com/rancher/local-path-provisioner
 ```
 
 ***Install storage path provisioner in kube-system***
-```
+```console
 $ vcluster connect -n k3s vcluster-k3s-123 -- helm install local-path --namespace kube-system /tmp/local-path-provisioner/deploy/chart --set storageClass.defaultClass=true
 
 $ vcluster connect -n k3s vcluster-k3s-123 -- helm list -n kube-system
@@ -74,7 +74,7 @@ NAME: local-path
 ```
 
 #### Deploy sample application
-```
+```console
 $ kubectl apply -f manifests/samples/test-storage-pod.yaml \
 	-f manifests/samples/test-storage-pvc.yaml \
         --kubeconfig=./tmp/kubeconfig-vcluster-k3s-123.yaml
@@ -87,8 +87,7 @@ persistentvolumeclaim/persistent-volume-claim created
 
 Checking host cluster, vcluster exists within k3s namespace:
 
-```
-
+```console
 $ kubectl get pvc,pv -n k3s
 
 NAME                                                                         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE

@@ -27,18 +27,18 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 4. [Bootstrap ArgoCD with necessary application](./doc/ARGOCD-INSTALL.md)
 5. [ArgoCD deploy Vcluster declarative way application deployment](./doc/ARGO-DEPLOYMENT.md)
 6. [ArgoCD deployment multiple vcluster same namespace expose via istio](./doc/ARGOCD-MULTIPLE-VCLUSTER.md)
-7. [Different Vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)
-8. [Different scenarios](./doc/SCENARIOS.md)
-9.  [Vcluster sample application deployment](./doc/SAMPLE-APPS-VCLUSTER.md)
-10. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)<br>
-    11.1 [Istio - passthrough](./doc/ISTIO-PASSTHROUGH.md)<br>
-    11.2 [Istio - tls termination](./doc/ISTIO-TLS-TERMINATION.md)<br>
-    11.3 [Istio - mutual tls](./doc/ISTIO-MTLS.md)<br>
-11. [Sync modes](./doc/SYNC-MODES.md)<br>
+<!--7. [Different Vcluster distributions eks/k0s/k8s](./doc/VARIETY-OF-DISTROS.md)-->
+7. [Different scenarios](./doc/SCENARIOS.md)
+8. [Vcluster sample application deployment](./doc/SAMPLE-APPS-VCLUSTER.md)
+9. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)<br>
+    9.1 [Istio - passthrough](./doc/ISTIO-PASSTHROUGH.md)<br>
+    9.2 [Istio - tls termination](./doc/ISTIO-TLS-TERMINATION.md)<br>
+    9.3 [Istio - mutual tls](./doc/ISTIO-MTLS.md)<br>
+10. [Sync modes](./doc/SYNC-MODES.md)<br>
     10.1 [Sync critical objectives](./doc/SYNC-OPTIONS.md)<br>
     10.2 [Sync storage](./doc/SYNC-STORAGE.md)<br>
-12. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
-13. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
-14. [Nesting Vcluster (Vcluster inside Vcluster)](./doc/NESTING-VCLUSTER.md)
-15. [Hints and usefull commands](./doc/HINTS.md)
-16. [Draft ssl replacement and comparation](./doc/CERTIFICATE-REPLACEMENT-ATTEMPT.md)
+11. [GitOps usecase in Github Actions](./doc/PIPELINE-EXAMPLE1.md)
+12. [GitOps usecase using Tekton](./doc/PIPELINE-EXAMPLE2.md)
+13. [Nesting Vcluster (Vcluster inside Vcluster)](./doc/NESTING-VCLUSTER.md)
+14. [Hints and usefull commands](./doc/HINTS.md)
+15. [Draft ssl replacement and comparation](./doc/CERTIFICATE-REPLACEMENT-ATTEMPT.md)
