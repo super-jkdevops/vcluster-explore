@@ -2,6 +2,8 @@
 So far only this method works
 
 Test:
+
+<!--
 ```mermaid
 graph TD;
     A-->B;
@@ -9,3 +11,4 @@ graph TD;
     B-->D;
     C-->D;
 ```
+-->
