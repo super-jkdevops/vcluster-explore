@@ -58,7 +58,7 @@ For testing please make sure that you have 172.18.0.3 assigned to one of k3d nod
 
 Otherwise you got an error:
 
-```
+```shell
 Unable to connect to the server: x509: certificate is valid for kubernetes.default.svc.cluster.local, kubernetes.default.svc, kubernetes.default, kubernetes, localhost, not vcluster.team-c.172.18.0.5.nip.io
 ```
 

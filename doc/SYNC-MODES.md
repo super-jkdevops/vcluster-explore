@@ -17,7 +17,7 @@ ArgoCD application manifests
 
 #### Fakenodes
 
-```
+```yaml
 parameters:
 - name: sync.fake-nodes.enabled
   value: 'true'
@@ -27,7 +27,7 @@ parameters:
 
 #### Realnodes
 
-```
+```yaml
 parameters:
 - name: sync.nodes.enabled
   value: 'true'
@@ -43,7 +43,7 @@ then value can be set to true.**
 ### Activation values helm/vcluster imperative
 
 #### Fakenodes
-```
+```yaml
 sync:
   fake-nodes:
     enabled: true
@@ -51,7 +51,7 @@ sync:
 
 #### Realnodes
 
-```
+```yaml
 sync:
   nodes:
     enabled: true

@@ -3,7 +3,7 @@
 `Before you start make sure that:`
 
 - [X] Host Cluster - Istio Gateway contains http port definition (80)
-```
+```json
 $ kubectl get gw -n istio-ingress -o jsonpath='{.items[].spec.servers[1]}' | jq
 {
   "hosts": [
@@ -20,7 +20,7 @@ $ kubectl get gw -n istio-ingress -o jsonpath='{.items[].spec.servers[1]}' | jq
 - [X] vCluster has been deployed alongside host cluster (please choose one of scenario doesn't matter which one!)
 
 ***example:***
-```
+```shell
 $ vcluster list
 
  NAME               NAMESPACE   CREATED                         AGE
@@ -35,7 +35,7 @@ diagnose-x-apps-x-vcluster-k3s-123                          1/1     Running   0 
 
 - [X] vCluster API has been exposed by istio vs
 ***example:***
-```
+```shell
 $ kubectl get vs -n k3s
 NAME               GATEWAYS                     HOSTS   AGE
 vcluster-k3s-123   ["istio-ingress/vcluster"]   ["*"]   57m
@@ -43,7 +43,7 @@ vcluster-k3s-123   ["istio-ingress/vcluster"]   ["*"]   57m
 
 - [X] vCluster kubeconfig has been extracted properly
 ***example:***
-```
+```shell
 kubectl get secret -n k3s vc-vcluster-k3s-123 \
 	-o jsonpath='{.data.config}' | base64 -d | \
 	sed 's/^\([[:space:]]\+server:\).*/\1 \
@@ -55,7 +55,7 @@ Simple busybox pod with no exposition
 
 <b>manifests</b>: diagnose-pod-vcluster.yaml
 
-```
+```shell
 kubectl apply -f manifest/samples/diagnose-pod-vcluster.yaml --kubeconfig=<your vcluster kubeconfig>
 ```
 
@@ -66,7 +66,7 @@ Simple nginx manifest deployment contains 3 webserver instances, it is exposed v
 
 <b>manifests</b>: test-deployment-vcluster.yaml test-deployment-vcluster-vs.yaml
 
-```
+```shell
 kubectl apply -f manifest/samples/test-deployment-vcluster.yaml --kubeconfig=<your vcluster kubeconfig>
 kubectl apply -f manifest/samples/test-deployment-vcluster-vs.yaml --kubeconfig=<your vcluster kubeconfig>
 ```
@@ -76,7 +76,7 @@ kubectl apply -f manifest/samples/test-deployment-vcluster-vs.yaml --kubeconfig=
 ## Test flask application vcluster
 <b>manifests</b>: app01-deployment-vcluster.yaml app01-deployment-vcluster-vs.yaml
 
-```
+```shell
 kubectl apply -f manifest/samples/app01-deployment-vcluster.yaml --kubeconfig=<your vcluster kubeconfig>
 kubectl apply -f manifest/samples/app01-deployment-vcluster-vs.yaml --kubeconfig=<your vcluster kubeconfig>
 ```
