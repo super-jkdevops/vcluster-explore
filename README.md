@@ -33,7 +33,7 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 10. [Sync modes](./doc/SYNC-MODES.md)<br>
     10.1 [Sync critical objectives](./doc/SYNC-OPTIONS.md)<br>
     10.2 [Sync storage](./doc/SYNC-STORAGE.md)<br>
-11. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)
+11. [Exposeing & accessing Vcluster](./doc/GENERAL-ACCESS.md)<br>
     11.1 [Istio - passthrough](./doc/ISTIO-PASSTHROUGH.md)<br>
     11.2 [Istio - tls termination](./doc/ISTIO-TLS-TERMINATION.md)<br>
     11.3 [Istio - mutual tls](./doc/ISTIO-MTLS.md)<br>
