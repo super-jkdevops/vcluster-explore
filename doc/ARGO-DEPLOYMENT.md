@@ -12,12 +12,12 @@
 
 ### Prequisite
 Create project
-```console
+```bash
 kubectl apply -f manifests/argocd/projects/project.yaml
 ```
 
 ### Clusterip
-```console
+```bash
 kubectl apply -f manifests/argocd/vcluster/k3s/vcluster-clip.yaml
 ```
 
