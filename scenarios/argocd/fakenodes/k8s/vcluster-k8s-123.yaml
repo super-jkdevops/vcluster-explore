@@ -20,7 +20,7 @@ spec:
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k8s-123.k8s.172.18.0.3.nip.io,vcluster-k8s-123}'
+        value: '{--tls-san=vcluster-k8s-123.172.27.0.3.nip.io}'
       
       - name: sync.services.enabled
         value: 'true'
@@ -53,15 +53,15 @@ spec:
       - name: sync.persistentvolumes.enabled
         value: 'true'
       - name: sync.storageclasses.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.priorityclasses.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.networkpolicies.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.volumesnapshots.enabled
-        value: 'true'
+        value: 'false'
       - name: sync.poddisruptionbudgets.enabled
-        value: 'true'
+        value: 'false'
 
       - name: enableHA
         value: 'true'
@@ -80,7 +80,7 @@ spec:
       - name: api.replicas
         value: '3'
     repoURL: https://charts.loft.sh/
-    targetRevision: 0.6.0
+    targetRevision: 0.7.0
   syncPolicy:
     automated: {}
     syncOptions:
