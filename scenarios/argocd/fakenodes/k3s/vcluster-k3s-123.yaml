@@ -17,6 +17,12 @@ spec:
       parameters:
       - name: service.type
         value: ClusterIP
+      - name: replicas
+        value: '1'
+      - name: isolation.enabled
+        value: 'false'
+      - name: isolation.podSecurityStandard
+        value: 'baseline'
       - name: vcluster.image
         value: 'rancher/k3s:v1.23.3-k3s1'
       - name: syncer.extraArgs

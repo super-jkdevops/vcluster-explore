@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-app-vcluster-k3s-123
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: apps
+    server: https://vcluster-k3s-123.172.27.0.3.nip.io
+  project: vcluster-gitops
+  source:
+    path: simple-nginx-deployment
+    repoURL: https://github.com/devopsapp84/sample-apps.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
