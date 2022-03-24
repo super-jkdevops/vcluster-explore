@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test-app-vcluster-k3s-123
+  name: test-deployment-1-scl
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: apps
-    server: https://vcluster-k3s-123.172.27.0.3.nip.io
+    server: https://vcluster-k3s-123.k3s.svc.cluster.local
   project: vcluster-gitops
   source:
     path: simple-nginx-deployment
