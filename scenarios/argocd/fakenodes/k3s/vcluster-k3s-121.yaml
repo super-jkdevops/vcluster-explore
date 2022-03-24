@@ -20,7 +20,7 @@ spec:
       - name: vcluster.image
         value: 'rancher/k3s:v1.21.9-k3s1'
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k3s-121.172.18.0.3.nip.io,vcluster-k3s-121}'
+        value: '{--tls-san=vcluster-k3s-121.172.18.0.3.nip.io,vcluster-k3s-121.k3s.svc.cluster.local}'
       - name: syncer.replicas
         value: '1'
       - name: sync.services.enabled

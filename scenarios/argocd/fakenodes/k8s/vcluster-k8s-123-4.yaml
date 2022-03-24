@@ -20,8 +20,7 @@ spec:
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k8s-123-4.k8s.172.18.0.3.nip.io,vcluster-k8s-123-4}'
-      
+        value: '{--tls-san=vcluster-k8s-123-4.172.23.0.3.nip.io,vcluster-k8s-123-4.k8s.svc.cluster.local}'
       - name: sync.services.enabled
         value: 'true'
       - name: sync.configmaps.enabled

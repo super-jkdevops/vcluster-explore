@@ -1,20 +1,20 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: vcluster-k3s-121
-  namespace: k3s
+  name: vcluster-k8s-123-4-vs
+  namespace: k8s
 spec:
   hosts:
-  - "*"
+  - "vcluster-k8s-123-4.172.27.0.3.nip.io"
   gateways:
-  - istio-ingress/vcluster
+  - istio-ingress/vcluster-k8s
   tls:
   - match:
     - port: 443
       sniHosts:
-      - "vcluster-k3s-121"
+      - "vcluster-k8s-123-4.172.27.0.3.nip.io"
     route:
     - destination:
-        host: vcluster-k3s-121
+        host: vcluster-k8s-123-4
         port:
           number: 443

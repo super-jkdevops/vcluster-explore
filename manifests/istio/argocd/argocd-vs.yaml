@@ -1,7 +1,3 @@
-###
-# ArgoCD deployed in vcluster-b
-###
----
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -16,7 +12,7 @@ spec:
   - match:
     - port: 443
       sniHosts:
-      - "*"
+      - "vmi758606.contaboserver.net"
     route:
     - destination:
         host: argocd-server
