@@ -197,28 +197,60 @@ https://console.cloud.google.com/gcr/images/google-containers/
 
 ## Kubeconfig extraction
 
+***Define variable:***
+```bash
+export INGRESS=$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+```
+
 ### k3s
 
 #### 121
 ```console
 kubectl get secret -n k3s vc-vcluster-k3s-121 \
--o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k3s-121/' \
+-o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k3s-121.'"$INGRESS"'.nip.io/' \
 > ./tmp/kubeconfig-vcluster-k3s-121.yaml
 ```
 
 #### 122
 ```conosle
 kubectl get secret -n k3s vc-vcluster-k3s-122 \
--o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k3s-122/' \
+-o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k3s-122.'"$INGRESS"'.nip.io/' \
 > ./tmp/kubeconfig-vcluster-k3s-122.yaml
 ```
 
 #### 123
 ```console
 kubectl get secret -n k3s vc-vcluster-k3s-123 \
--o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k3s-123/'> \
+-o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k3s-123.'"$INGRESS"'.nip.io/'> \
 ./tmp/kubeconfig-vcluster-k3s-123.yaml
 ```
+
+---
+
+### k8s
+
+#### 121
+```console
+kubectl get secret -n k8s vc-vcluster-k8s-121 \
+-o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k8s-121.'"$INGRESS"'.nip.io/' \
+> ./tmp/kubeconfig-vcluster-k8s-121.yaml
+```
+
+#### 122
+```conosle
+kubectl get secret -n k8s vc-vcluster-k8s-122 \
+-o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k8s-122.'"$INGRESS"'.nip.io/' \
+> ./tmp/kubeconfig-vcluster-k8s-122.yaml
+```
+
+#### 123
+```console
+kubectl get secret -n k8s vc-vcluster-k8s-123 \
+-o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/vcluster-k8s-123.'"$INGRESS"'.nip.io/'> \
+./tmp/kubeconfig-vcluster-k8s-123.yaml
+```
+
+
 
 
 <!--
