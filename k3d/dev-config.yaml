@@ -9,14 +9,14 @@ image: docker.io/rancher/k3s:v1.22.6-k3s1
 subnet: "172.27.0.0/16"
 ports:
 # For vCluster
-- port: 4446:443
+- port: 4443:443
   nodeFilters:
   - loadbalancer
 # For ArgoCD
-- port: 8092:8080
+- port: 8090:8080
   nodeFilters:
   - loadbalancer
-- port: 8446:8443
+- port: 8443:8443
   nodeFilters:
   - loadbalancer
 # For sample application

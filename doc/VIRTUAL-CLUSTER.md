@@ -116,3 +116,5 @@ k3d-vcluster-poc-server-0   Ready    control-plane,master   3m54s   v1.22.6+k3s1
 ```
 
 In first example OS-IMAGE is `Fake Kubernetes Image` what point exact to virtual cluster.
+<br/>
+Second example concerns real node cluster OS-IMAGE field indicate K3D cluster image that came from.

@@ -10,10 +10,9 @@ spec:
   project: vcluster-gitops
   source:
     path: istio
-    repoURL: https://github.com/devopsapp84/istio-deploy.git
+    repoURL: https://github.com/devopsapp84/app-collection-argocd.git
     targetRevision: main
   syncPolicy:
-    automated:
-      selfHeal: true
+    automated: {}
     syncOptions:
     - CreateNamespace=true

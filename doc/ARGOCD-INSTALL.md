@@ -12,7 +12,7 @@
 ### Bootstrap flux 2 within host cluster (real one!)
 Refer to external [repo](https://github.com/devopsapp84/flux-gitops-infra).
 
-```
+```bash
 flux bootstrap github --owner=$GH_FLUX_USER \
 --repository=flux-fleet-platform \
 --branch=main \
@@ -30,7 +30,7 @@ flux bootstrap github --owner=$GH_FLUX_USER \
 `Above command will install Argocd in argo way apps of apps`
 
 #### vcluster-k8s-123
-```
+```bash
 flux bootstrap github --kubeconfig tmp/vcluster-k8s-123-kubeconfig.yaml \
   --owner=$GH_FLUX_USER \
   --repository=flux-fleet-platform \

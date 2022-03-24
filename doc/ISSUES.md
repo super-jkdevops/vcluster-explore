@@ -4,7 +4,7 @@
 
 ### Background
 
-```
+```shell
 $ kubectl depete -f scenarios/argo/selective-sync/k8s/vcluster-k8s-121-no-sync-all.yaml
 
 $ kubectl get po,deployment,svc,cm,secret -n k8s
@@ -21,6 +21,6 @@ secret/vcluster-k8s-121-no-sync-all-certs   Opaque                              
 ### Workaround
 Delete namespace accordingly
 
-```
+```console
 kubectl delete <namespace>
 ```

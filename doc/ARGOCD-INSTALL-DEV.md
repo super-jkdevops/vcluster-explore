@@ -12,7 +12,7 @@
 ### Bootstrap flux 2 within host cluster (real one!)
 Refer to external [repo](https://github.com/devopsapp84/flux-gitops-infra).
 
-```
+```bash
 flux bootstrap github --owner=$GH_FLUX_USER \
 --repository=flux-fleet-platform \
 --branch=main \

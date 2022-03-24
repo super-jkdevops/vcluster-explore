@@ -46,7 +46,7 @@ No resources found
 #### ConfigMaps
 Pods dangling in ContainerCreating status the reason is below:
 
-```
+```shell
   Type     Reason       Age                From               Message
   ----     ------       ----               ----               -------
   Normal   Scheduled    77s                default-scheduler  Successfully assigned default/test-8499f4f74-zfmfd to k3d-dev-agent-2
@@ -65,14 +65,14 @@ scenario:
 2. Created virtual service exposition through ingress istio gateway to vcluster test service
 
 
-```
+```console
 curl http://vcluster
 no healthy
 ```
 
 After restore values for sync.endpoints.enabled to true:
 
-```
+```console
 curl -v http://vcluster
 *   Trying 172.27.0.3:80...
 * TCP_NODELAY set
@@ -106,7 +106,7 @@ Host cluster API, Vcluster API don't know about pods each other.
 
 
 ***vcluster***
-```
+```console
 $ vcluster connect -n tests vcluster -- kubectl get no
 No resources found
 
@@ -123,7 +123,7 @@ test-7c68854699-lgk8w   0/1     Pending   0          23s
 ```
 
 ***hcluster***
-```
+```console
 $ kubectl get po -n tests | grep test
 $ kubectl get po -n tests
 NAME                                   READY   STATUS    RESTARTS        AGE
@@ -141,7 +141,7 @@ Isn't critical cause cluster can function without it however it is hard to deter
 pods status
 
 ***vcluster***
-```
+```console
 $ vcluster connect -n tests vcluster -- kubectl describe po -n apps | grep Events: -A 1
 Events:                      <none>
 
@@ -153,7 +153,7 @@ Events:                      <none>
 ```
 
 ***hcluster***
-```
+```console
 $ kubectl describe po -n tests test-7c68854699-d8wd8-x-apps-x-vcluster | grep Events: -A 20
 Events:
   Type    Reason     Age    From               Message
@@ -173,7 +173,7 @@ disadvantage!
 #### fake-persistentvolumes
 Require installing storage class and storage provisioners. It can be [local-path-provisiooner](https://github.com/rancher/local-path-provisioner/tree/master/deploy/chart) from rancher.
 
-```
+```console
 $ vcluster connect -n tests vcluster -- helm install local-path --namespace local-path-storage . -f values.yaml --create-namespace
 NAME: local-path
 LAST DEPLOYED: Thu Mar 17 15:33:59 2022
@@ -202,19 +202,19 @@ local-path      local-path-storage      1               2022-03-17 15:33:59.2378
 ```
 
 Testcase: https://rancher.com/docs/k3s/latest/en/storage/
-```
+```conosle
 
 ```
 
 ### Trying unrecognize sync option
 It is reflect only to v0.6.0 cause don't know if new cotrollers will appear.
 
-```
+```yaml
 - name: sync.deployments.enabled
   value: true
 ```
 
-```
+```shell
 F0317 13:03:33.001150       1 main.go:32] create controller context: unrecognized controller deployments, available controllers: configmaps, secrets, persistentvolumeclaims, ingresses, priorityclasses, networkpolicies, services, fake-nodes, storageclasses, endpoints, pods, events, persistentvolumes, poddisruptionbudgets, serviceaccounts, fake-persistentvolumes, nodes, volumesnapshots
 ```
 
