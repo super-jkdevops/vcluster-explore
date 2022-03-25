@@ -1,4 +1,9 @@
 kubeconfig.yaml
 .vscode/**
 tmp/**
+terraform/tmp/**
+terraform/terraform.tfstat*
+terraform/.terraform.lock.hcl
+terraform/.terraform/**
+
 scenarios/argo/selective-sync/**

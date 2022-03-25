@@ -3,3 +3,4 @@ provider "argocd" {
   username     = var.ARGOCD_USER
   password     = var.ARGOCD_PASS
   insecure     = true
+}

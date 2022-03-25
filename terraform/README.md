@@ -15,7 +15,7 @@
 
 1. Connect to existing ArgoCD server
 
-Prepare provider.tf contains:
+*Prepare provider.tf contains:*
 
 ```terraform
 terraform {
@@ -32,13 +32,15 @@ It cames from: https://registry.terraform.io/providers/amitai-devops/argocd/late
 
 Please use bash/sh environment prefixed by `TF_VAR_`
 
+---
+
 2. Export variables:
 
 ***ArgoCD***
 ```bash
 export ARGOCD_URL=$(echo "$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}'):$(kubectl -n argocd get service argocd-server -o jsonpath='{.spec.ports[?(@.name=="https")].port}')")
 export ARGOCD_USER=admin
-export ARGOCD_PASS=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}")
+export ARGOCD_PASS=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 ```
 
 ***Terraform***
@@ -58,4 +60,32 @@ provider "argocd" {
   password     = var.ARGOCD_PASS
   insecure     = true
 }
+```
+
+---
+
+3. Initialize
+
+``` bash
+terraform initialize
+```
+
+Output:
+
+```console
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of amitai-devops/argocd from the dependency lock file
+- Using previously-installed amitai-devops/argocd v2.1.2
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
 ```
