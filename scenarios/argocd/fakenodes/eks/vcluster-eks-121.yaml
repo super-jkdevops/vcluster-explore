@@ -20,7 +20,7 @@ spec:
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-eks-121.eks.172.18.0.3.nip.io,172.18.0.3,vcluster-eks-121}'
+        value: '{--tls-san=vcluster-eks-121.172.27.0.3.nip.io,172.27.0.3,vcluster-eks-121.eks.svc.cluster.local}'
       - name: syncer.replicas
         value: '3'
       - name: sync.services.enabled
