@@ -4,6 +4,12 @@ public (external access) required Loadbalancer configuration.
 
 For testing purpose I encourage to use k3d.
 
+`Make note!`
+Your k3d cluster can have different name cause I used preaviously created one.
+I created this document in realy early stage so may not reflect name convention from
+scenarios directory. 
+
+
 **Assumptions**
 namespace:    team-a
 cluster name: vcluster
