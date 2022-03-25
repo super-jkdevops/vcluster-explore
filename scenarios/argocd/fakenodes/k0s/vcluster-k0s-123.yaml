@@ -20,7 +20,7 @@ spec:
       - name: serviceCIDR
         value: "10.43.0.0/12"
       - name: syncer.extraArgs
-        value: '{--tls-san=vcluster-k0s-123.k0s.172.18.0.3.nip.io,vcluster-k0s-123}'
+        value: '{--tls-san=vcluster-k0s-123.172.18.0.3.nip.io,vcluster-k0s-123.k0s.svc.cluster.local}'
       - name: vcluster.image
         value: 'k0sproject/k0s:v1.23.3-k0s.1'
       - name: syncer.replicas

@@ -7,7 +7,7 @@ spec:
   hosts:
   - "vcluster-k0s-121.172.27.0.3.nip.io"
   gateways:
-  - istio-ingress/vcluster
+  - istio-ingress/vcluster-k0s
   tls:
   - match:
     - port: 443
