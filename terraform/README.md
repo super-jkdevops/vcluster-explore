@@ -7,11 +7,12 @@
 - [X] ArgoCD exposed using Istio Ingress controller
 - [X] Terraform cli installed
 
+```
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! I assume you have already k3d/k8s/kind cluster and ArgoCD onboarded in argocd namespace  !!!
 !!! together with Istio across istio-system, istio-ingress nampespaces!		             !!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+```
 
 1. Connect to existing ArgoCD server
 
