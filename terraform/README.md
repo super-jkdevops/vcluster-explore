@@ -17,7 +17,7 @@
 
 Prepare provider.tf contains:
 
-```
+```terraform
 terraform {
   required_providers {
     argocd = {
