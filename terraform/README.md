@@ -1,3 +1,7 @@
+```
+UNDERCONSTRUCTION! UNDERCONSTRUCTION! UNDERCONSTRUCTION! UNDERCONSTRUCTION! UNDERCONSTRUCTION! UNDERCONSTRUCTION! UNDERCONSTRUCTION!
+```
+
 # Provision ArgoCD apps, projects clusters using terraform
 
 ## Requirements
@@ -39,7 +43,7 @@ Please use bash/sh environment prefixed by `TF_VAR_`
 
 ***ArgoCD***
 ```bash
-export ARGOCD_URL=$(echo "$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}'):$(kubectl -n argocd get service argocd-server -o jsonpath='{.spec.ports[?(@.name=="https")].port}')")
+export ARGOCD_URL=$(echo "$(kubectl get nodes --selector=node-role.kubernetes.io/master -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}'):443")
 export ARGOCD_USER=admin
 export ARGOCD_PASS=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 ```
