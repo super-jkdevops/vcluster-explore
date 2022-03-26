@@ -13,6 +13,8 @@
 | 9  | k3d/1.22.6+k3s1 | k8s | etcd:3.5.1-0,  kube-controller-manager:v1.22.4, kube-apiserver:v1.22.4 | yes | yes | only objects | [k8s-v122](../scenarios/argocd/fakenodes/k8s/vcluster-k8s-122.yaml)|
 | 10 | k3d/1.22.6+k3s1 | k8s | etcd:3.5.1-0,  kube-controller-manager:v1.23.1, kube-apiserver:v1.23.1 | yes | yes | only objects | [k8s-v123](../scenarios/argocd/fakenodes/k8s/vcluster-k8s-123.yaml)|
 | 11 | k3d/1.22.6+k3s1 | k8s | etcd:3.5.1-0,  kube-controller-manager:v1.23.4, kube-apiserver:v1.23.4 | yes | yes | only objects | [k8s-v123-4](../scenarios/argocd/fakenodes/k8s/vcluster-k8s-123-4.yaml)|
+| 12 | k3d/1.22.6+k3s1 | k8s | etcd:3.5.1-0,  kube-controller-manager:v1.23.1, kube-apiserver:v1.23.1 | yes | yes | only objects | [k8s-v123-insecure](../scenarios/argocd/fakenodes/k8s/vcluster-k8s-123-insecure.yaml)|
+
 
 * ha mode   - enable high availability cluster components multiple API server, backend database, controllers etc
 * sync mode - for fake clusters node synchronization stay disable on all dinmentions

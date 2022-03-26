@@ -18,6 +18,12 @@ it is very hard to devide API server into separate pods!
 - [ ] k3s
 - [ ] k0s
 
+## Requirements
+- [X] TLS certificate for Istio Ingress GW
+- [X] Istio Ingress GW with certificate
+- [X] Virtual service
+- [X] predefine Vcluster ArgoCD app
+
 ## Configuration
 It requires several params that need to be provided during API Helm vcluster deployment. 
 it is obvious that it requires configuration of istio vs and gateway.
