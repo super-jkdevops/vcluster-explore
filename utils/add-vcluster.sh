@@ -5,6 +5,9 @@
 
 export VCLUSTER=${VCLUSTER:-vcluster}
 export VCLUSTER_NS=${VCLUSTER_NS:-vcluster}
+export VCLUSTER_URL=${VCLUSTER_URL:-$VCLUSTER.$VCLUSTER_NS.svc.cluster.local}
+
+echo $VCLUSTER_URL
 
 ns_state=$(kubectl get namespace $VCLUSTER_NS --no-headers --output=go-template={{.metadata.name}} 2>/dev/null)
 
@@ -24,7 +27,7 @@ metadata:
 type: Opaque
 stringData:
   name: $VCLUSTER
-  server: https://$VCLUSTER.$VCLUSTER_NS.svc.cluster.local:443
+  server: https://$VCLUSTER_URL
   config: |
     {
       "tlsClientConfig": {
