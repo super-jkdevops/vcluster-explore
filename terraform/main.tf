@@ -4,3 +4,8 @@ provider "argocd" {
   password     = var.ARGOCD_PASS
   insecure     = true
 }
+
+#provider "kubernetes" {
+#  config_path    = "./tmp/kubeconfig.yaml"
+#  config_context = "Default"
+#}
