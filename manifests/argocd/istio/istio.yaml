@@ -13,6 +13,8 @@ spec:
     repoURL: https://github.com/devopsapp84/app-collection-argocd.git
     targetRevision: main
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: false
     syncOptions:
     - CreateNamespace=true
