@@ -16,7 +16,7 @@ For example `vcluster-k8s-123` scenario has this params:
   value: '{--tls-san=vcluster-k8s-123.172.27.0.3.nip.io,vcluster-k8s-123.k8s.svc.cluster.local}'
 ```
 
-As you can see 2 hosts entries are used for 1st for ingress 2nd for local access.
+Can observe that 2 hosts entries are used for 1st for ingress 2nd for internal cluster service.
 Make note your INGRESS IP may be different cause different K3d subnet...
 
 I highly recommend to use local way just to avoid unnecessary paterns creation (easy setup!).
