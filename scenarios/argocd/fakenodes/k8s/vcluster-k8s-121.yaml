@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: k8s
     server: https://kubernetes.default.svc
-  project: vcluster-gitops
+  project: vcluster
   source:
     chart: vcluster-k8s
     helm:
