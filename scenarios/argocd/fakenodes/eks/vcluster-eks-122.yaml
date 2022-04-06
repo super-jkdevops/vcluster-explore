@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: eks
     server: https://kubernetes.default.svc
-  project: vcluster-gitops
+  project: vcluster
   source:
     chart: vcluster-eks
     helm:
