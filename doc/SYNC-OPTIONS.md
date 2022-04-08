@@ -68,7 +68,7 @@ It is same rule here than for Configmaps, since vcluster pods will not consume s
 they will stay invisible for host cluster! This is very important in play around hostcluster secrets came from vcluster!
 
 TBD: 
-- [] Deep check how it behaves!
+- [ ] Deep check how it behaves!
 
 ---
 
