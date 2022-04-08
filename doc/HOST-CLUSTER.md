@@ -10,8 +10,8 @@
 
 
 `Be aware` 
-<br/>Some changes in k3d may become k3d/dev-cluster.conf incompatible.
-It requires some additional steps to be migrated.
+<br/>Some changes after k3d binary update may become k3d/dev-cluster.conf incompatible.
+It requires some additional steps to be migrated. Please correct values accordingly to version/release!
 
 ```console
 k3d migrate config.yaml > config-migrated.yaml
