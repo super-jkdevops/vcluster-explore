@@ -1,10 +1,16 @@
 ### Deploy K3d cluster using config file
 ```
-k3d cluster create --config=k3d/config-vcluster.yaml
+./utins/create-k3d-cluster.sh
 ```
 
+
+***example output:***
+
+![create k3d cluster](../doc/images/k3d-cluster-creation.png)
+
+
 `Be aware` 
-<br/>Some changes in k3d may become k3d/config.yaml incompatible.
+<br/>Some changes in k3d may become k3d/dev-cluster.conf incompatible.
 It requires some additional steps to be migrated.
 
 ```console
