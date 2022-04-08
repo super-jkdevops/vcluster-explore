@@ -24,12 +24,13 @@ apiservers:  3
 ```
 
 ***Checked by:***
-- [X] Services:   sync.services.enabled 
-- [X] Configmaps: sync.configmap.enabled
-- [X] Nodes:      sync.pods.enabled
-- [X] Endpoints:  sync.endpoints.enabled
-- [X] Pods:       sync.pods.enabled
-- [ ] Events:     sync.events.enabled
+- [X] Services:    sync.services.enabled 
+- [X] Configmaps:  sync.configmap.enabled
+- [ ] Secrets:     sync.secrets.enabled
+- [X] Nodes:       sync.pods.enabled
+- [X] Endpoints:   sync.endpoints.enabled
+- [X] Pods:        sync.pods.enabled
+- [ ] Events:      sync.events.enabled
 
 ### Modification critical settings results (failure)
 
@@ -52,6 +53,22 @@ Pods dangling in ContainerCreating status the reason is below:
   Normal   Scheduled    77s                default-scheduler  Successfully assigned default/test-8499f4f74-zfmfd to k3d-dev-agent-2
   Warning  FailedMount  13s (x8 over 77s)  kubelet            MountVolume.SetUp failed for volume "kube-api-access-66rjq" : configmap "kube-root-ca.crt-x-default-x-vcluster" not found
 ```
+
+`Important!!!`
+Since vcluster pods will not consume configmaps within vcluster they will stay invisible for host cluster! This is very 
+important in play around hostcluster configmaps came from vcluster!
+
+---
+
+#### Secrets
+They are not critical and it can be disable so far I did not encountered any isses for disabling it.
+
+`Important!!!`
+It is same rule here than for Configmaps, since vcluster pods will not consume secrets within vcluster 
+they will stay invisible for host cluster! This is very important in play around hostcluster secrets came from vcluster!
+
+TBD: 
+- [] Deep check how it behaves!
 
 ---
 
