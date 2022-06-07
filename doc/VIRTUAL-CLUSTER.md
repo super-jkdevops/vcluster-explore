@@ -80,7 +80,7 @@ Trying imperative way (testing)
 
 **Deploy**:
 ```
-helm install vcluster vcluster/vcluster -n team-a --create-namespace -f ./defaults/vcluster.yaml
+helm install vcluster vcluster/vcluster -n team-a --create-namespace -f ./defaults/values-k3s.yaml
 ```
 
 ![vcluster-a spinup](../doc/images/vcluster-a-install.gif)
