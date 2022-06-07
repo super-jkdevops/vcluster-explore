@@ -3,7 +3,7 @@ From far time ago many companies started explore ARM64 platform.
 Those are small computers that are ideal for IoT. Here I will demonstrate
 How to spin up Vcluster on such as platform.  
 
-How looks Rasberry pi4b here is a picture ;-)
+How looks Rasberry pi4b here is a picture ;-)<br/>
 ![Rasberry pi 4b](./images/rasberry-pi4b.png)
 
 ## Requirements
