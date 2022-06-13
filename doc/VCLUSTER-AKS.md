@@ -1,10 +1,8 @@
-# Running Vcluster on ARM64 platform
-From far time ago many companies started explore ARM64 platform.
-Those are small computers that are ideal for IoT. Here I will demonstrate
-How to spin up Vcluster on such as platform.  
+# Running Vcluster on Azure
+![Azure logo](https://bluestream.gr/wp-content/uploads/Azure-Logo-600x300-1.png)
 
-How looks Rasberry pi4b here is a picture ;-)<br/>
-![Rasberry pi 4b](./images/rasberry-pi4b.png)
+Since EKS is embaded into Vcluster I would like to try something else. This time I gonna
+tests Vcluster on top of AKS (Azure Kubernetes).
 
 ## Requirements
 - [X] vcluster-demo cloned
