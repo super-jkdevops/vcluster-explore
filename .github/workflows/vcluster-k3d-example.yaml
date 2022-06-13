@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - v-actions
+      - dev
     paths:
       - .github/workflows/vcluster-k3d-example.yaml
 
@@ -13,9 +13,8 @@ env:
   REPO: vcluster-demo
   
 jobs:
-  k3d-cluster:
+  k3s:
     runs-on: [ ubuntu-20.04 ]
-    needs: helm-release
     steps:
       - name: Checkout repository
         id: 'checkout'
@@ -27,7 +26,7 @@ jobs:
         with:
           cluster-name: "gh-$GITHUB_REF_NAME"
           args: >-
-              --config=images/scripts/config/gh-a-dev-cluster.conf
+              --config=./k3d/dev-cluster.conf
       - name: Install kubectl locally
         uses: azure/setup-kubectl@v2.0
         with:
@@ -44,9 +43,25 @@ jobs:
 
       - name: Add helm repository
         run: |
-            helm repo add pg https://raw.githubusercontent.com/procter-gamble/backstage-image-builder/gh-pages/backstage --username=${{ github.actor }} --password ${{ secrets.GH_HELM_TOKEN }}
-            helm repo update 
-            helm search repo -l pg
-            helm install backstage pg/backstage-base -n backstage-base --create-namespace --set auth.githubToken=${{ secrets.GH_HELM_TOKEN }} --set lighthouse.enabled=false
-            helm install backstage pg/backstage-dev -n backstage-dev --create-namespace --set auth.githubToken=${{ secrets.GH_HELM_TOKEN }} --set lighthouse.enabled=false
-            helm list -A
+          helm repo add vcluster https://charts.loft.sh/
+          helm repo update vcluster
+      - name: Install vcluster
+        run: |
+          helm install dev vcluster/vcluster -n vcluster --create-namespace -f ./defaults/values-k3s.yaml --set service.type="ClusterIP"
+
+  vcluster:
+    runs-on: [ ubuntu-20.04 ]
+    needs: k3s
+    steps:
+      - name: Checkout repository
+        id: 'checkout'
+        uses: actions/checkout@v3
+
+      - name: Install vcluster-cli
+        run: |
+          curl -s -L "https://github.com/loft-sh/vcluster/releases/latest" | sed -nE 's!.*"([^"]*vcluster-linux-amd64)".*!https://github.com\1!p' | xargs -n 1 curl -L -o vcluster 
+          chmod +x vcluster
+          sudo mv vcluster /usr/local/bin;
+      - name: list vclusters
+        run: |
+          vcluster list
