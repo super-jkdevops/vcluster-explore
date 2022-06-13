@@ -1,0 +1,67 @@
+name: Vcluster K3d Sample
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+    paths:
+      - .github/workflows/vcluster-k3d-example.yaml
+
+env:
+  ORG: procter-gamble 
+  REPO: vcluster-demo
+  
+jobs:
+  k3s:
+    runs-on: [ ubuntu-20.04 ]
+    steps:
+      - name: Checkout repository
+        id: 'checkout'
+        uses: actions/checkout@v3
+
+      - name: Create cluster
+        uses: AbsaOSS/k3d-action@v2
+        continue-on-error: true
+        with:
+          cluster-name: "gh-$GITHUB_REF_NAME"
+          args: >-
+              --config=./k3d/dev-cluster.conf
+      - name: Install kubectl locally
+        uses: azure/setup-kubectl@v2.0
+        with:
+          version: 'v1.22.6'
+        id: install
+
+      - run: echo "${HOME}/.local/bin" >> $GITHUB_PATH
+
+      - name: list nodes
+        run: |
+            kubectl get nodes
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+
+      - name: Add helm repository
+        run: |
+          helm repo add vcluster https://charts.loft.sh/
+          helm repo update vcluster
+      - name: Install vcluster
+        run: |
+          helm install dev vcluster/vcluster -n vcluster --create-namespace -f ./defaults/values-k3s.yaml --set service.type="ClusterIP"
+
+  vcluster:
+    runs-on: [ ubuntu-20.04 ]
+    needs: k3s
+    steps:
+      - name: Checkout repository
+        id: 'checkout'
+        uses: actions/checkout@v3
+
+      - name: Install vcluster-cli
+        run: |
+          curl -s -L "https://github.com/loft-sh/vcluster/releases/latest" | sed -nE 's!.*"([^"]*vcluster-linux-amd64)".*!https://github.com\1!p' | xargs -n 1 curl -L -o vcluster 
+          chmod +x vcluster
+          sudo mv vcluster /usr/local/bin;
+      - name: list vclusters
+        run: |
+          vcluster list

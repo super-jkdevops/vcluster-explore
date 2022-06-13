@@ -155,3 +155,6 @@ aks-agentpool-49968056-vmss000000   Ready    agent   16s     v1.22.6
 
 ***Be aware!***<br>
 Instead of fake nodes I used real one! So it is just piece of AKS cluster within specific namespace
+
+:skull:
+After you finish testing don't forget about deletion your cluster cause it can consume all credits!
