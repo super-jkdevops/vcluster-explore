@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vcluster-aks-122
+  name: vcluster-k3s-122
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,7 +13,7 @@ spec:
   source:
     chart: vcluster
     helm:
-      releaseName: vcluster-aks-122
+      releaseName: vcluster-k3s-122
       parameters:
       - name: service.type
         value: ClusterIP
