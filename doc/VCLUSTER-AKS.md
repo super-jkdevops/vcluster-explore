@@ -139,8 +139,8 @@ dev    LoadBalancer   10.0.238.49   20.221.122.154   443:30822/TCP   2m31s
 Extract vcluster api IP address
 ```console
 LB_VCLUSTER_IP=$(kubectl get svc -n vcluster-aks dev -o=jsonpath='{.status.loadBalancer.ingress[*].ip}')
-kubectl get secret -n vcluster-aks vc-dev -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/'"$LB_VCLUSTER_IP"'/'
-
+kubectl get secret -n vcluster-aks vc-dev -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/'"$LB_VCLUSTER_IP"'/' | tee vcluster-aks-kubeconfig.yaml
+export KUBECONFIG=vcluster-aks-kubeconfig.yaml
 ```
 
 **List nodes**

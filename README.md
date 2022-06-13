@@ -24,7 +24,8 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 2. [Create host cluster K3D](./doc/HOST-CLUSTER.md)
 3. [Create Vcluster manually testing purpose](./doc/VIRTUAL-CLUSTER.md)<br>
    3.1 [Running Vcluster on arm64](./doc/VCLUSTER-ARM64.md)<br>
-   3.2 [Vcluster commandline examples](./doc/VCLUSTER-COMMANDS.md)
+   3.2 [Running Vcluster on AKS](./doc/VCLUSTER-AKS.md)<br>
+   3.3 [Vcluster commandline examples](./doc/VCLUSTER-COMMANDS.md)
 4. [Bootstrap ArgoCD with necessary application](./doc/ARGOCD-INSTALL.md)
 5. [ArgoCD deploy Vcluster declarative way application deployment](./doc/ARGO-DEPLOYMENT.md)<br>
    5.1 [ArgoCD deploy multiple vcluster same namespace then access via istio](./doc/ARGOCD-MULTIPLE-VCLUSTER.md)<br>
