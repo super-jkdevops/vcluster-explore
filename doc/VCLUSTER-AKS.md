@@ -112,12 +112,15 @@ helm install dev vcluster/vcluster -n vcluster-aks --create-namespace -f ./defau
 ```
 
 ### Verification
+
+**List helm installed**
 ```console
 $ helm list -n vcluster-aks
 NAME    NAMESPACE       REVISION        UPDATED                                         STATUS          CHART           APP VERSION
 dev     vcluster-aks    1               2022-06-13 12:34:44.728139781 +0200 CEST        deployed        vcluster-0.9.1   
 ```
 
+**List vclusters (cli required)**
 ```console
 $ vcluster list
 
@@ -134,7 +137,7 @@ NAME   TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)         AGE
 dev    LoadBalancer   10.0.238.49   20.221.122.154   443:30822/TCP   2m31s
 ```
 
-Extract vcluster api IP address
+**Extract vcluster api IP address**
 ```console
 LB_VCLUSTER_IP=$(kubectl get svc -n vcluster-aks dev -o=jsonpath='{.status.loadBalancer.ingress[*].ip}')
 kubectl get secret -n vcluster-aks vc-dev -o jsonpath='{.data.config}' | base64 -d | sed 's/^\([[:space:]]\+server:\).*/\1 https:\/\/'"$LB_VCLUSTER_IP"'/' | tee vcluster-aks-kubeconfig.yaml
@@ -150,5 +153,5 @@ aks-agentpool-49968056-vmss000004   Ready    agent   16s     v1.22.6
 aks-agentpool-49968056-vmss000000   Ready    agent   16s     v1.22.6
 ```
 
-***Be aware!***
+***Be aware!***<br>
 Instead of fake nodes I used real one! So it is just piece of AKS cluster within specific namespace
