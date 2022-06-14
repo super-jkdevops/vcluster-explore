@@ -10,7 +10,7 @@ if [[ $(k3d cluster list --no-headers | grep $clustername) ]]; then
   exit
 else
   printf "%b" "\U1F525 Creating Kubernetes Cluster: \e[1;34m$clustername\e[0m "
-  k3d cluster create ${clustername} -c ./k3d/${clustername}.conf >> $k3d_log &
+  k3d cluster create ${clustername} -c ./k3d/${clustername}.yaml >> $k3d_log &
 fi
 sp='/-\|'
 printf ' '
