@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Create K3d Temporary Cluster
         id: k3d
-        uses: devopsapp84/ghaK3D@v0.0.5
+        uses: devopsapp84/ghaK3D@v0.0.1
         with:
           cluster_name: small
           cluster_version: latest
