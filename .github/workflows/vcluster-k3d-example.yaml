@@ -1,5 +1,4 @@
 name: Vcluster K3d Sample
-
 on:
   workflow_dispatch:
   push:
@@ -7,11 +6,9 @@ on:
       - dev
     paths:
       - .github/workflows/vcluster-k3d-example.yaml
-
 env:
   ORG: procter-gamble 
   REPO: vcluster-demo
-  
 jobs:
   k3s:
     runs-on: [ ubuntu-20.04 ]
