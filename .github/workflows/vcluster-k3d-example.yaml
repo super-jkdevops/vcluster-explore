@@ -6,7 +6,6 @@ on:
       - dev
     paths:
       - .github/workflows/vcluster-k3d-example.yaml
-      
 env:
   ORG: procter-gamble 
   REPO: vcluster-demo
