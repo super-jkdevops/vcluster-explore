@@ -3,7 +3,7 @@
 ## What it is
 Virtual clusters are fully working Kubernetes clusters that run on top of other Kubernetes clusters. Compared to fully separate "real" clusters, virtual clusters do not have their own node pools. Instead, they are scheduling workloads inside the underlying cluster while having their own separate control plane.
 
-![Vcluster Architecture](https://www.vcluster.com/docs/media/diagrams/vcluster-architecture.svg)
+![Vcluster Architecture](https://github.com/loft-sh/vcluster/raw/main/docs/static/media/vcluster-comparison.png)
 
 
 ## Main features:
@@ -16,7 +16,7 @@ Virtual clusters are fully working Kubernetes clusters that run on top of other 
 
 ## Comparation with others
 
-![Comparation](https://www.vcluster.com/docs/media/vcluster-comparison.png)
+![Comparation](https://github.com/loft-sh/vcluster/blob/main/docs/static/media/diagrams/vcluster-architecture.svg)
 
 
 ## Table of contents:
